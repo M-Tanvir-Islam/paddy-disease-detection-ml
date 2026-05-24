@@ -9,11 +9,18 @@ checkpoints/
 *.pth
 *.onnx
 
-# Experiment folders are excluded from `main`.
-# Each experiment lives on its own branch (exp/01-..., exp/02-...).
-# When you check out an experiment branch, that branch's .gitignore
-# whitelists its own experiment folder.
-experiments/
+# Experiment folders: this branch (compare_models) tracks ALL Phase 1
+# bake-off experiments so a side-by-side comparison can be produced.
+# Each individual exp branch still tracks ONLY its own folder.
+experiments/*
+!experiments/exp01_mobilenetv3small_baseline/
+!experiments/exp01_mobilenetv3small_baseline/**
+!experiments/exp02_mobilenetv3large_baseline/
+!experiments/exp02_mobilenetv3large_baseline/**
+!experiments/exp03_efficientnetb0_baseline/
+!experiments/exp03_efficientnetb0_baseline/**
+!experiments/exp04_mobilevit_xxs_baseline/
+!experiments/exp04_mobilevit_xxs_baseline/**
 
 # Local W&B run cache (per-machine, never committed)
 wandb/
