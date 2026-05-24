@@ -1,0 +1,43 @@
+# Datasets — too large to commit; download/place locally
+datasets/
+data/raw/
+data/processed/
+
+# Model checkpoints — large binaries, host on HF Hub
+checkpoints/
+*.pt
+*.pth
+*.onnx
+
+# Experiment folders are excluded from `main`.
+# Each experiment lives on its own branch (exp/01-..., exp/02-...).
+# When you check out an experiment branch, that branch's .gitignore
+# whitelists its own experiment folder.
+experiments/
+
+# Local W&B run cache (per-machine, never committed)
+wandb/
+
+# Notebook scratch
+.ipynb_checkpoints/
+
+# Env and secrets
+.env
+.env.local
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.python-version
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
