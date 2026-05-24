@@ -1,0 +1,42 @@
+# exp04 - MobileViT-XXS baseline. Phase 1 bake-off (final candidate).
+# Identical pipeline to exp01-03 - only the model and backbone source differ.
+
+experiment:
+  id: "exp04"
+  name: "mobilevit_xxs_baseline"
+  description: "MobileViT-XXS (transformer-CNN hybrid), frozen-then-unfrozen, no augmentation, no class weights"
+
+model:
+  name: "mobilevit_xxs"
+  source: "timm"
+  pretrained: true
+  # MobileViT was pretrained at 256x256; we use 224 here for a fair bake-off
+  # comparison against MobileNetV3-Small/Large and EfficientNet-B0 (all 224).
+
+data:
+  dataset: "kaggle_paddy_2022"
+  split_csv: "data/splits/kaggle.csv"
+  augmentation: false
+  weighted_loss: false
+
+training:
+  epochs: 40
+  batch_size: 64
+  warmup_epochs: 5
+  lr_head: 3.0e-4
+  lr_full: 5.0e-5
+  weight_decay: 1.0e-2
+  seed: 42
+
+hardware:
+  num_workers: 4
+
+logging:
+  wandb_project: "krishidoc"
+  wandb_run_name: "exp04_mobilevit_xxs_baseline"
+  # Change to "online" after `wandb login`. Use "disabled" to skip W&B entirely.
+  wandb_mode: "disabled"
+
+output:
+  checkpoint_path: "checkpoints/exp04_best.pt"
+  results_dir: "experiments/exp04_mobilevit_xxs_baseline/results/"
