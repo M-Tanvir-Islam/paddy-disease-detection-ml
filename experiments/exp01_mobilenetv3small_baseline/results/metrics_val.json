@@ -52,22 +52,26 @@
     "batch_size": 1,
     "input_size": 224,
     "num_runs": 50,
-    "mean_ms": 7.87,
-    "std_ms": 1.09,
-    "p50_ms": 7.58,
-    "p95_ms": 9.41
+    "mean_ms": 8.28,
+    "std_ms": 1.12,
+    "p50_ms": 7.64,
+    "p95_ms": 10.15
   },
   "inference_latency_gpu": {
     "device": "cuda",
     "batch_size": 1,
     "input_size": 224,
     "num_runs": 50,
-    "mean_ms": 8.89,
-    "std_ms": 1.61,
-    "p50_ms": 8.31,
-    "p95_ms": 12.88
+    "mean_ms": 8.91,
+    "std_ms": 1.39,
+    "p50_ms": 8.34,
+    "p95_ms": 11.42
   },
   "training": {
-    "note": "training-time stats not available (re-evaluated from checkpoint)"
+    "total_seconds": 2883.1,
+    "mean_epoch_seconds": 72.08,
+    "peak_vram_MB": 613.1,
+    "best_epoch": 35,
+    "num_epochs": 40
   }
 }
