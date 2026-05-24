@@ -1,0 +1,41 @@
+# exp02 - MobileNetV3-Large baseline. Phase 1 bake-off.
+# Identical pipeline to exp01 - only the model differs.
+
+experiment:
+  id: "exp02"
+  name: "mobilenetv3large_baseline"
+  description: "MobileNetV3-Large, frozen-then-unfrozen, no augmentation, no class weights"
+
+model:
+  name: "mobilenet_v3_large"
+  source: "torchvision.models"
+  pretrained: true
+  pretrained_weights: "IMAGENET1K_V1"
+
+data:
+  dataset: "kaggle_paddy_2022"
+  split_csv: "data/splits/kaggle.csv"
+  augmentation: false
+  weighted_loss: false
+
+training:
+  epochs: 40
+  batch_size: 64
+  warmup_epochs: 5
+  lr_head: 3.0e-4
+  lr_full: 5.0e-5
+  weight_decay: 1.0e-2
+  seed: 42
+
+hardware:
+  num_workers: 4
+
+logging:
+  wandb_project: "krishidoc"
+  wandb_run_name: "exp02_mobilenetv3large_baseline"
+  # Change to "online" after `wandb login`. Use "disabled" to skip W&B entirely.
+  wandb_mode: "disabled"
+
+output:
+  checkpoint_path: "checkpoints/exp02_best.pt"
+  results_dir: "experiments/exp02_mobilenetv3large_baseline/results/"

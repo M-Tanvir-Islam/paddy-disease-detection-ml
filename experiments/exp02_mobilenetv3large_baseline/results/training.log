@@ -1,0 +1,86 @@
+Epoch 001 | loss 1.1164 | val macro-F1 0.5182 | val acc 0.5823 | 72.9s
+  saved best checkpoint (val macro-F1: 0.5182)
+Epoch 002 | loss 0.3603 | val macro-F1 0.8458 | val acc 0.8629 | 71.4s
+  saved best checkpoint (val macro-F1: 0.8458)
+Epoch 003 | loss 0.1436 | val macro-F1 0.9049 | val acc 0.9180 | 71.3s
+  saved best checkpoint (val macro-F1: 0.9049)
+Epoch 004 | loss 0.0837 | val macro-F1 0.9272 | val acc 0.9283 | 73.5s
+  saved best checkpoint (val macro-F1: 0.9272)
+Epoch 005 | loss 0.0489 | val macro-F1 0.9329 | val acc 0.9398 | 71.6s
+  saved best checkpoint (val macro-F1: 0.9329)
+--- Phase B: unfreeze all, lr=5e-05, cosine annealing ---
+Epoch 006 | loss 0.0206 | val macro-F1 0.9428 | val acc 0.9462 | 73.3s
+  saved best checkpoint (val macro-F1: 0.9428)
+Epoch 007 | loss 0.0086 | val macro-F1 0.9407 | val acc 0.9462 | 73.1s
+Epoch 008 | loss 0.0077 | val macro-F1 0.9414 | val acc 0.9468 | 72.5s
+Epoch 009 | loss 0.0096 | val macro-F1 0.9450 | val acc 0.9500 | 72.7s
+  saved best checkpoint (val macro-F1: 0.9450)
+Epoch 010 | loss 0.0059 | val macro-F1 0.9436 | val acc 0.9488 | 73.0s
+Epoch 011 | loss 0.0047 | val macro-F1 0.9460 | val acc 0.9507 | 73.1s
+  saved best checkpoint (val macro-F1: 0.9460)
+Epoch 012 | loss 0.0033 | val macro-F1 0.9491 | val acc 0.9539 | 73.3s
+  saved best checkpoint (val macro-F1: 0.9491)
+Epoch 013 | loss 0.0040 | val macro-F1 0.9442 | val acc 0.9500 | 72.3s
+Epoch 014 | loss 0.0021 | val macro-F1 0.9468 | val acc 0.9526 | 73.4s
+Epoch 015 | loss 0.0014 | val macro-F1 0.9486 | val acc 0.9539 | 73.0s
+Epoch 016 | loss 0.0014 | val macro-F1 0.9497 | val acc 0.9545 | 72.8s
+  saved best checkpoint (val macro-F1: 0.9497)
+Epoch 017 | loss 0.0013 | val macro-F1 0.9505 | val acc 0.9552 | 73.7s
+  saved best checkpoint (val macro-F1: 0.9505)
+Epoch 018 | loss 0.0022 | val macro-F1 0.9447 | val acc 0.9488 | 73.7s
+Epoch 019 | loss 0.0048 | val macro-F1 0.9490 | val acc 0.9520 | 73.3s
+Epoch 020 | loss 0.0013 | val macro-F1 0.9489 | val acc 0.9526 | 73.1s
+Epoch 021 | loss 0.0008 | val macro-F1 0.9518 | val acc 0.9558 | 73.2s
+  saved best checkpoint (val macro-F1: 0.9518)
+Epoch 022 | loss 0.0016 | val macro-F1 0.9487 | val acc 0.9520 | 72.9s
+Epoch 023 | loss 0.0015 | val macro-F1 0.9489 | val acc 0.9526 | 72.8s
+Epoch 024 | loss 0.0011 | val macro-F1 0.9487 | val acc 0.9526 | 72.4s
+Epoch 025 | loss 0.0007 | val macro-F1 0.9492 | val acc 0.9532 | 72.0s
+Epoch 026 | loss 0.0005 | val macro-F1 0.9495 | val acc 0.9539 | 72.4s
+Epoch 027 | loss 0.0005 | val macro-F1 0.9495 | val acc 0.9539 | 72.7s
+Epoch 028 | loss 0.0004 | val macro-F1 0.9490 | val acc 0.9539 | 72.5s
+Epoch 029 | loss 0.0004 | val macro-F1 0.9481 | val acc 0.9532 | 72.6s
+Epoch 030 | loss 0.0005 | val macro-F1 0.9483 | val acc 0.9532 | 72.8s
+Epoch 031 | loss 0.0004 | val macro-F1 0.9483 | val acc 0.9532 | 72.5s
+Epoch 032 | loss 0.0004 | val macro-F1 0.9492 | val acc 0.9539 | 72.3s
+Epoch 033 | loss 0.0003 | val macro-F1 0.9494 | val acc 0.9539 | 72.5s
+Epoch 034 | loss 0.0003 | val macro-F1 0.9494 | val acc 0.9539 | 72.4s
+Epoch 035 | loss 0.0003 | val macro-F1 0.9494 | val acc 0.9539 | 72.6s
+Epoch 036 | loss 0.0004 | val macro-F1 0.9494 | val acc 0.9539 | 72.7s
+Epoch 037 | loss 0.0003 | val macro-F1 0.9494 | val acc 0.9539 | 72.4s
+Epoch 038 | loss 0.0005 | val macro-F1 0.9492 | val acc 0.9539 | 73.0s
+Epoch 039 | loss 0.0003 | val macro-F1 0.9492 | val acc 0.9539 | 72.8s
+Epoch 040 | loss 0.0002 | val macro-F1 0.9494 | val acc 0.9539 | 72.5s
+
+Training complete. Best val macro-F1: 0.9518 @ epoch 21. Total: 48.5 min, peak VRAM 1586.2 MB
+
+Loading best checkpoint for final val evaluation...
+
+Measuring model cost and inference latency...
+  params: 4.215 M  |  MACs: 0.234 G  |  ckpt: 17.07 MB
+  CPU latency (mean/p95): 15.54 / 18.17 ms
+  GPU latency (mean/p95): 9.86 / 10.57 ms
+                          precision    recall  f1-score   support
+
+   bacterial_leaf_blight     1.0000    0.8889    0.9412        72
+   bacterial_leaf_streak     0.9483    0.9649    0.9565        57
+bacterial_panicle_blight     0.9800    0.9608    0.9703        51
+                   blast     0.9481    0.9808    0.9642       261
+              brown_spot     0.9635    0.9103    0.9362       145
+              dead_heart     0.9907    0.9815    0.9860       216
+            downy_mildew     0.8854    0.9140    0.8995        93
+                   hispa     0.9419    0.9498    0.9458       239
+                  normal     0.9588    0.9697    0.9642       264
+                  tungro     0.9512    0.9571    0.9541       163
+
+                accuracy                         0.9558      1561
+               macro avg     0.9568    0.9478    0.9518      1561
+            weighted avg     0.9563    0.9558    0.9558      1561
+
+
+Best val macro-F1: 0.9518 @ epoch 21
+Results saved to: E:\GitHub\Personal\krishidoc_ml\experiments\exp02_mobilenetv3large_baseline\results
+Full log:         E:\GitHub\Personal\krishidoc_ml\experiments\exp02_mobilenetv3large_baseline\results\training.log
+
+Note: test set was NOT evaluated. Per protocol, test is locked until
+the final winning experiment.
