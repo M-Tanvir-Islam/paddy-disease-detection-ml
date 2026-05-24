@@ -1,0 +1,43 @@
+# exp01 - MobileNetV3-Small baseline on Kaggle Paddy 2022.
+# Purpose: establish a clean baseline number with the smallest production-viable
+#          model, no augmentation, no class weighting. Subsequent experiments
+#          will toggle one variable at a time.
+
+experiment:
+  id: "exp01"
+  name: "mobilenetv3small_baseline"
+  description: "MobileNetV3-Small, frozen-then-unfrozen, no augmentation, no class weights"
+
+model:
+  name: "mobilenet_v3_small"
+  source: "torchvision.models"
+  pretrained: true
+  pretrained_weights: "IMAGENET1K_V1"
+
+data:
+  dataset: "kaggle_paddy_2022"
+  split_csv: "data/splits/kaggle.csv"
+  augmentation: false
+  weighted_loss: false
+
+training:
+  epochs: 40
+  batch_size: 64
+  warmup_epochs: 5
+  lr_head: 3.0e-4
+  lr_full: 5.0e-5
+  weight_decay: 1.0e-2
+  seed: 42
+
+hardware:
+  num_workers: 4
+
+logging:
+  wandb_project: "krishidoc"
+  wandb_run_name: "exp01_mobilenetv3small_baseline"
+  # Change to "online" after `wandb login`. Use "disabled" to skip W&B entirely.
+  wandb_mode: "disabled"
+
+output:
+  checkpoint_path: "checkpoints/exp01_best.pt"
+  results_dir: "experiments/exp01_mobilenetv3small_baseline/results/"
