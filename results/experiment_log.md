@@ -19,9 +19,12 @@ training curves, cost trade-offs) see
 
 ★ Phase 1 winner. All four pass the production budget (ONNX < 50 MB, CPU latency < 500 ms).
 
-## Phase 2 — Optimize the winner
+## Phase 2 — Optimize the winners (parallel tracks)
 
-_Populated after Phase 2 begins._
+Running both top Phase 1 candidates through the same optimization recipe.
+The cross-track winner of Phase 2 proceeds to Phase 3.
+
+### Track A — MobileNetV3-Large (built on exp02 = 0.9518)
 
 | ID    | Change                       | Val macro-F1 | Δ vs prior | Notes |
 | ----- | ---------------------------- | ------------ | ---------- | ----- |
@@ -29,6 +32,15 @@ _Populated after Phase 2 begins._
 | exp06 | + weighted CE                | —            | —          | —     |
 | exp07 | + Dhan-Shomadhan field       | —            | —          | —     |
 | exp08 | + label smoothing (optional) | —            | —          | —     |
+
+### Track B — EfficientNet-B0 (built on exp03 = 0.9609)
+
+| ID    | Change                       | Val macro-F1 | Δ vs prior | Notes |
+| ----- | ---------------------------- | ------------ | ---------- | ----- |
+| exp09 | + augmentation               | —            | —          | —     |
+| exp10 | + weighted CE                | —            | —          | —     |
+| exp11 | + Dhan-Shomadhan field       | —            | —          | —     |
+| exp12 | + label smoothing (optional) | —            | —          | —     |
 
 ## Phase 3 — Final
 
