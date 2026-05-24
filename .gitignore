@@ -9,11 +9,12 @@ checkpoints/
 *.pth
 *.onnx
 
-# Experiment folders are excluded from `main`.
-# Each experiment lives on its own branch (exp/01-..., exp/02-...).
-# When you check out an experiment branch, that branch's .gitignore
-# whitelists its own experiment folder.
-experiments/
+# Experiment folders: this branch (exp03_efficientnetb0) tracks ONLY exp03.
+# All other experiment folders stay ignored so a stray `git add .` can't
+# accidentally pull them in. Update this section on each new experiment branch.
+experiments/*
+!experiments/exp03_efficientnetb0_baseline/
+!experiments/exp03_efficientnetb0_baseline/**
 
 # Local W&B run cache (per-machine, never committed)
 wandb/
