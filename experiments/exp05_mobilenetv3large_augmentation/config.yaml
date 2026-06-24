@@ -1,0 +1,42 @@
+# exp05 - MobileNetV3-Large with augmentation. Phase 2 Track A.
+# One-variable change from exp02: enable the training augmentation pipeline.
+# Weighted loss remains disabled so this measures augmentation alone.
+
+experiment:
+  id: "exp05"
+  name: "mobilenetv3large_augmentation"
+  description: "MobileNetV3-Large, frozen-then-unfrozen, augmentation enabled, no class weights"
+
+model:
+  name: "mobilenet_v3_large"
+  source: "torchvision.models"
+  pretrained: true
+  pretrained_weights: "IMAGENET1K_V1"
+
+data:
+  dataset: "kaggle_paddy_2022"
+  split_csv: "data/splits/kaggle.csv"
+  augmentation: true
+  weighted_loss: false
+
+training:
+  epochs: 40
+  batch_size: 64
+  warmup_epochs: 5
+  lr_head: 3.0e-4
+  lr_full: 5.0e-5
+  weight_decay: 1.0e-2
+  seed: 42
+
+hardware:
+  num_workers: 4
+
+logging:
+  wandb_project: "krishidoc"
+  wandb_run_name: "exp05_mobilenetv3large_augmentation"
+  # Change to "online" after `wandb login`. Use "disabled" to skip W&B entirely.
+  wandb_mode: "disabled"
+
+output:
+  checkpoint_path: "checkpoints/exp05_best.pt"
+  results_dir: "experiments/exp05_mobilenetv3large_augmentation/results/"

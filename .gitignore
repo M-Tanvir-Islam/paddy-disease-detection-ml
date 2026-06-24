@@ -1,20 +1,21 @@
-# Datasets — too large to commit; download/place locally
+# Datasets - too large to commit; download/place locally
 datasets/
 data/raw/
 data/processed/
 
-# Model checkpoints — large binaries, host on HF Hub
+# Model checkpoints - large binaries, host on HF Hub
 checkpoints/
 *.pt
 *.pth
 *.onnx
 
-# Experiment folders: this branch (exp02_mobilenetv3large) tracks ONLY exp02.
-# All other experiment folders stay ignored so a stray `git add .` can't
-# accidentally pull them in. Update this section on each new experiment branch.
+# Experiment folders: this branch tracks exp02 baseline context and exp05.
+# Keep other experiment folders ignored so stray `git add .` cannot pull them in.
 experiments/*
 !experiments/exp02_mobilenetv3large_baseline/
 !experiments/exp02_mobilenetv3large_baseline/**
+!experiments/exp05_mobilenetv3large_augmentation/
+!experiments/exp05_mobilenetv3large_augmentation/**
 
 # Local W&B run cache (per-machine, never committed)
 wandb/
