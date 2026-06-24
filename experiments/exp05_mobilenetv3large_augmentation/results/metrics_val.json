@@ -1,0 +1,73 @@
+{
+  "macro_f1": 0.9572632648884619,
+  "accuracy": 0.9609224855861627,
+  "top_2_accuracy": 0.9871877001921845,
+  "top_3_accuracy": 0.9910313901345291,
+  "macro_auc_ovr": 0.9978438343477629,
+  "per_class_f1": {
+    "bacterial_leaf_blight": 0.9436619718309859,
+    "bacterial_leaf_streak": 0.954954954954955,
+    "bacterial_panicle_blight": 0.970873786407767,
+    "blast": 0.96045197740113,
+    "brown_spot": 0.9583333333333334,
+    "dead_heart": 0.986046511627907,
+    "downy_mildew": 0.9162011173184358,
+    "hispa": 0.9508196721311475,
+    "normal": 0.9715370018975332,
+    "tungro": 0.9597523219814241
+  },
+  "per_class_precision": {
+    "bacterial_leaf_blight": 0.9571428571428572,
+    "bacterial_leaf_streak": 0.9814814814814815,
+    "bacterial_panicle_blight": 0.9615384615384616,
+    "blast": 0.9444444444444444,
+    "brown_spot": 0.965034965034965,
+    "dead_heart": 0.9906542056074766,
+    "downy_mildew": 0.9534883720930233,
+    "hispa": 0.9317269076305221,
+    "normal": 0.973384030418251,
+    "tungro": 0.96875
+  },
+  "per_class_recall": {
+    "bacterial_leaf_blight": 0.9305555555555556,
+    "bacterial_leaf_streak": 0.9298245614035088,
+    "bacterial_panicle_blight": 0.9803921568627451,
+    "blast": 0.9770114942528736,
+    "brown_spot": 0.9517241379310345,
+    "dead_heart": 0.9814814814814815,
+    "downy_mildew": 0.8817204301075269,
+    "hispa": 0.9707112970711297,
+    "normal": 0.9696969696969697,
+    "tungro": 0.950920245398773
+  },
+  "model_cost": {
+    "total_params_M": 4.215,
+    "trainable_params_M": 4.215,
+    "macs_G": 0.234,
+    "flops_G": 0.467,
+    "checkpoint_size_MB": 17.07
+  },
+  "inference_latency_cpu": {
+    "device": "cpu",
+    "batch_size": 1,
+    "input_size": 224,
+    "num_runs": 50,
+    "mean_ms": 16.37,
+    "std_ms": 0.55,
+    "p50_ms": 16.22,
+    "p95_ms": 17.14
+  },
+  "inference_latency_gpu": {
+    "device": "cuda",
+    "batch_size": 1,
+    "input_size": 224,
+    "num_runs": 50,
+    "mean_ms": 10.43,
+    "std_ms": 0.8,
+    "p50_ms": 10.25,
+    "p95_ms": 11.85
+  },
+  "training": {
+    "note": "training-time stats not available (re-evaluated from checkpoint)"
+  }
+}

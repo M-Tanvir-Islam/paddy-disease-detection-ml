@@ -33,8 +33,20 @@ The implementation uses Albumentations 2.x-compatible arguments for the noise an
 
 ## Result
 
-Pending.
+| Metric | exp02 baseline | exp05 augmentation | Delta |
+| --- | ---: | ---: | ---: |
+| Val macro-F1 | 0.9518 | 0.9573 | +0.0055 |
+| Val accuracy | 0.9558 | 0.9609 | +0.0051 |
+| CPU mean latency | 15.54 ms | 16.37 ms | +0.83 ms |
+
+Best checkpoint was selected at epoch 21 with validation macro-F1 0.9573. The run stayed well within the production budget: 4.215M params, 17.07 MB checkpoint, and 16.37 ms mean CPU latency in the latest saved metrics.
+
+Per-class weak spot remains `downy_mildew` with F1 0.9162 and recall 0.8817. Augmentation helped the overall score, but there is still room to improve minority/fragile classes.
+
+## Conclusion
+
+Augmentation alone produced a modest useful gain over exp02 without hurting the production constraints. The next experiment should test whether weighted CrossEntropy adds improvement on top of this augmented setup.
 
 ## Next Step
 
-If validation macro-F1 improves or stays close with better generalization, continue to exp06 by adding weighted CrossEntropy on top of this augmentation setup.
+Create `exp06_mobilenetv3large_weighted` from this branch and change only `data.weighted_loss` from `false` to `true`.
