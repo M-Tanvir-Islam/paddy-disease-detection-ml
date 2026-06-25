@@ -28,19 +28,21 @@ exp03 as the highest validation macro-F1 model.
 
 | ID | Model | Aug | WL | LR config | Input | Val F1 | Val Acc | CPU ms | Delta vs prev |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| exp05 | MobileNetV3-Large | Yes | No | head 3e-4 / full 5e-5 | 224 | - | - | - | pending vs exp02 |
-| exp06 | MobileNetV3-Large | Yes | Yes | head 3e-4 / full 5e-5 | 224 | - | - | - | pending vs exp05 |
-| exp07 | MobileNetV3-Large + Dhan-Shomadhan | Yes | Yes | head 3e-4 / full 5e-5 | 224 | - | - | - | pending vs exp06 |
-| exp08 | MobileNetV3-Large + label smoothing | Yes | Yes | head 3e-4 / full 5e-5 | 224 | - | - | - | pending vs exp07 |
+| exp05 | MobileNetV3-Large | Yes | No | head 3e-4 / full 5e-5 | 224 | 0.9573 | 0.9609 | 16.37 | +0.0055 vs exp02 |
+| exp06 | MobileNetV3-Large | Yes | Yes | head 3e-4 / full 5e-5 | 224 | 0.9670 | 0.9673 | 19.89 | +0.0097 vs exp05 |
+| exp07 | MobileNetV3-Large LR sweep | Yes | Yes | best: head 1e-3 / full 1e-4 | 224 | 0.9676 | 0.9693 | 16.35 | +0.0006 vs exp06 |
+| exp08 | MobileNetV3-Large OneCycleLR | Yes | Yes | OneCycle max_lr 1e-3 | 224 | 0.9746 | 0.9750 | 15.83 | +0.0076 vs exp06 |
+| exp09 | MobileNetV3-Large OneCycle max_lr sweep | Yes | Yes | best OneCycle max_lr 1.5e-3 | 224 | 0.9779 | 0.9763 | 15.02 | +0.0033 vs exp08 |
+| exp10 | MobileNetV3-Large input resolution sweep | Yes | Yes | OneCycle max_lr 1.5e-3 | 256 | 0.9718 | 0.9718 | 17.90 | -0.0061 vs exp09; rejected |
 
 ### Track B - EfficientNet-B0
 
 | ID | Model | Aug | WL | LR config | Input | Val F1 | Val Acc | CPU ms | Delta vs prev |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| exp09 | EfficientNet-B0 | Yes | No | head 3e-4 / full 5e-5 | 224 | - | - | - | pending vs exp03 |
-| exp10 | EfficientNet-B0 | Yes | Yes | head 3e-4 / full 5e-5 | 224 | - | - | - | pending vs exp09 |
-| exp11 | EfficientNet-B0 + Dhan-Shomadhan | Yes | Yes | head 3e-4 / full 5e-5 | 224 | - | - | - | pending vs exp10 |
-| exp12 | EfficientNet-B0 + label smoothing | Yes | Yes | head 3e-4 / full 5e-5 | 224 | - | - | - | pending vs exp11 |
+| TBD | EfficientNet-B0 | Yes | No | TBD | 224 | - | - | - | future EfficientNet augmentation |
+| TBD | EfficientNet-B0 | Yes | Yes | TBD | 224 | - | - | - | future EfficientNet weighted loss |
+| TBD | EfficientNet-B0 + Dhan-Shomadhan | Yes | Yes | TBD | 224 | - | - | - | future deployment-style eval |
+| TBD | EfficientNet-B0 + label smoothing | Yes | Yes | TBD | 224 | - | - | - | optional future experiment |
 
 ## Phase 3 - Final
 
