@@ -49,12 +49,35 @@ Treat OneCycleLR as useful only if it gives a meaningful gain, for example:
 - validation macro-F1 at or above 0.9700, or
 - clear per-class improvement without hurting `downy_mildew` recall.
 
-Small gains around +0.001 should not replace exp06 as the conservative base.
-
 ## Result
 
-Pending.
+| Metric | exp06 cosine | exp07 high cosine | exp08 OneCycleLR |
+| --- | ---: | ---: | ---: |
+| Val macro-F1 | 0.9670 | 0.9676 | 0.9746 |
+| Val accuracy | 0.9673 | 0.9693 | 0.9750 |
+| CPU mean latency | 19.89 ms | 16.35 ms | 15.83 ms |
+| Best epoch | 22 | 33 | 32 |
+| `downy_mildew` F1 | 0.9424 | 0.9348 | 0.9524 |
+| `downy_mildew` recall | 0.9677 | 0.9247 | 0.9677 |
+
+OneCycleLR produced a meaningful gain over both prior MobileNet results:
+
+- +0.0076 macro-F1 vs exp06
+- +0.0070 macro-F1 vs exp07 high-LR cosine
+- `downy_mildew` recall stayed at 0.9677 while F1 improved to 0.9524
+- CPU latency remained very low at 15.83 ms
+
+The curve dipped during the early high-LR phase after unfreezing, then recovered strongly as the cycle annealed. The best checkpoint was selected at epoch 32.
+
+## Conclusion
+
+OneCycleLR is the current best MobileNetV3-Large configuration. It passes the pre-declared success criteria and should become the MobileNet base for any later MobileNet work.
 
 ## Next Step
 
-If OneCycleLR is not meaningfully better, proceed to Dhan-Shomadhan deployment-style validation or run the EfficientNet-B0 track.
+Do not run the test set yet. Recommended next move is either:
+
+1. Run the EfficientNet-B0 track with the same recipe so the final architecture choice is fair: augmentation, weighted loss, then OneCycleLR if useful.
+2. Evaluate exp08 on Dhan-Shomadhan as deployment-style validation without training on that data.
+
+My preference: run the EfficientNet-B0 track next, then compare the best MobileNet and EfficientNet candidates on the same Dhan-Shomadhan holdout.

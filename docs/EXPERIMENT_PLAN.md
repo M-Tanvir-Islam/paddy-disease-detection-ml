@@ -38,7 +38,7 @@ winner tracks should use comparable recipes when practical.
 | exp05 | exp02 + augmentation | Augmentation improves generalization | `exp05_mobilenetv3large_augmentation` | complete: 0.9573 macro-F1 |
 | exp06 | exp05 + weighted CrossEntropy | Weighted loss improves minority/fragile classes | `exp06_mobilenetv3large_weighted` | complete: 0.9670 macro-F1 |
 | exp07 | exp06 + LR sweep | LR tuning may improve the current best MobileNet setup | `exp07_mobilenetv3large_lr_sweep` | complete elsewhere: best 0.9676 macro-F1, not meaningful vs exp06 |
-| exp08 | exp06 + OneCycleLR | Test whether OneCycleLR beats the conservative exp06 scheduler | `exp08_mobilenetv3large_onecycle` | planned |
+| exp08 | exp06 + OneCycleLR | Test whether OneCycleLR beats the conservative exp06 scheduler | `exp08_mobilenetv3large_onecycle` | complete: 0.9746 macro-F1, current best MobileNet |
 
 LR sweep result: exp07 compared high/default/low LR recipes on the current best
 MobileNetV3-Large setup. High LR was numerically best at 0.9676 macro-F1, but
@@ -46,9 +46,7 @@ only +0.0006 over exp06 and below the +0.003 meaningful-gain threshold. Use the
 exp06 default LR recipe (`head_lr=3e-4`, `full_lr=5e-5`) as the conservative
 base unless future reruns confirm high LR consistently.
 
-OneCycleLR plan: exp08 keeps exp06's augmentation, weighted loss, dataset, and
-head warmup. It changes only the full fine-tuning scheduler from epoch-level
-CosineAnnealingLR to batch-level OneCycleLR after unfreezing.
+OneCycleLR result: exp08 kept exp06's augmentation, weighted loss, dataset, and head warmup, then changed only the full fine-tuning scheduler to batch-level OneCycleLR after unfreezing. It reached 0.9746 macro-F1, a meaningful +0.0076 over exp06, and is the current best MobileNetV3-Large configuration.
 
 ### Track B - EfficientNet-B0
 
