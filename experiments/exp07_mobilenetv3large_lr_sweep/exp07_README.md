@@ -27,40 +27,6 @@ Does a different head/full fine-tuning LR improve validation macro-F1 or trainin
 | default | `configs/default.yaml` | 3e-4 | 5e-5 | Reproduce current exp06 LR recipe for comparison |
 | low | `configs/low.yaml` | 1e-4 | 1e-5 | Test slower, more conservative fine-tuning |
 
-## Commands
-
-Run from repo root:
-
-```powershell
-conda activate krishidoc_ml
-
-python experiments/exp07_mobilenetv3large_lr_sweep/train.py --config configs/high.yaml
-python experiments/exp07_mobilenetv3large_lr_sweep/train.py --config configs/default.yaml
-python experiments/exp07_mobilenetv3large_lr_sweep/train.py --config configs/low.yaml
-```
-
-Re-evaluate a finished variant on validation:
-
-```powershell
-python scripts/evaluate_checkpoint.py experiments/exp07_mobilenetv3large_lr_sweep
-```
-
-Note: `evaluate_checkpoint.py` expects `config.yaml`. For sweep variants, either evaluate from the training-produced metrics or temporarily copy the chosen variant config to `config.yaml` before re-evaluation.
-
-## What To Compare
-
-- Validation macro-F1 first
-- Validation accuracy second
-- Per-class F1/recall, especially `downy_mildew`
-- Training loss shape
-- Validation macro-F1 curve smoothness
-- Whether high LR spikes or degrades after unfreezing
-- Whether low LR underfits or plateaus early
-- Best epoch
-- CPU latency and checkpoint size should stay effectively unchanged
-
-A gain of at least +0.003 macro-F1 over exp06 is meaningful enough to consider adopting the new LR recipe.
-
 ## Baseline To Beat
 
 | Metric | exp06 weighted loss |
@@ -72,10 +38,39 @@ A gain of at least +0.003 macro-F1 over exp06 is meaningful enough to consider a
 | `downy_mildew` F1 | 0.9424 |
 | `downy_mildew` recall | 0.9677 |
 
-## Result
+## Results
 
-Pending.
+| Variant | Head LR | Full LR | Val macro-F1 | Val Acc | CPU ms | Best epoch | Delta vs exp06 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| high | 1e-3 | 1e-4 | 0.9676 | 0.9693 | 16.35 | 33 | +0.0006 |
+| default | 3e-4 | 5e-5 | 0.9612 | 0.9635 | 17.19 | 23 | -0.0058 |
+| low | 1e-4 | 1e-5 | 0.9006 | 0.9039 | 16.22 | 40 | -0.0664 |
+
+The high-LR variant produced the best sweep score, but the gain over exp06 is only +0.0006 macro-F1. That is below the pre-declared +0.003 threshold for a meaningful LR improvement.
+
+## Curve Notes
+
+- High LR reached the best score late at epoch 33. It improved over exp06 only marginally and showed some mid-run validation fluctuation.
+- Default LR underperformed the original exp06 rerun, despite using the same LR recipe. Treat this as normal run-to-run variance or artifact of the sweep run, not a reason to discard exp06.
+- Low LR clearly underfit or learned too slowly: best epoch was 40 and macro-F1 only reached 0.9006.
+
+## Per-Class Notes
+
+The high-LR variant had lower `downy_mildew` recall than exp06:
+
+| Metric | exp06 | exp07 high |
+| --- | ---: | ---: |
+| `downy_mildew` F1 | 0.9424 | 0.9348 |
+| `downy_mildew` recall | 0.9677 | 0.9247 |
+
+So although high LR had the best overall sweep macro-F1, exp06 remains more attractive if preserving the minority-class recall gain from weighted loss is important.
+
+## Conclusion
+
+Do not treat LR tuning as a meaningful improvement over exp06. The high-LR variant is the best sweep run, but the gain is too small and it weakens `downy_mildew` recall compared with exp06.
+
+Recommended base for the next MobileNetV3-Large step: keep exp06's default LR recipe (`head_lr=3e-4`, `full_lr=5e-5`) unless a future rerun confirms the high-LR gain consistently.
 
 ## Next Step
 
-After the sweep, choose the best LR recipe. Then decide whether to continue with Dhan-Shomadhan external validation / data work or run the EfficientNet-B0 track.
+Proceed to deployment-style validation or Dhan-Shomadhan data work from the exp06/exp07 knowledge state. If training a new branch, use the exp06 default LR recipe as the conservative base.

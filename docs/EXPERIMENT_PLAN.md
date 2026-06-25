@@ -1,104 +1,109 @@
 # Experiment Plan
 
-The full campaign that produces the deployed model. Three phases:
-**bake-off**, **optimize the winners**, **finalize**. Every experiment is
-one variable change against the prior, so attribution stays clean.
+The campaign that produces the deployed model. Three phases: bake-off,
+optimize the winners, and finalize. Every experiment changes one main variable
+against the prior result so attribution stays clean.
 
 ---
 
-## Phase 1 â€” Bake-off (vanilla baselines) â€” **COMPLETE**
+## Phase 1 - Bake-off (vanilla baselines) - COMPLETE
 
-Goal: pick the best architectures under the production budget. Every run
-used the same training pipeline (no augmentation, no class weighting, same
-hyperparameters, same data split, same seed). Only the model varied.
+Goal: pick the best architectures under the production budget. Every run used
+the same training pipeline: no augmentation, no class weighting, same
+hyperparameters, same data split, same seed. Only the model varied.
 
-| ID       | Model             | Source      | Params (M) | Val macro-F1 | CPU mean (ms) | Branch                         |
-| -------- | ----------------- | ----------- | ---------- | ------------ | ------------- | ------------------------------ |
-| exp01    | MobileNetV3-Small | torchvision | 1.528      | 0.9251       | 8.28          | `exp01_mobilenetv3small`       |
-| exp02 â˜…  | MobileNetV3-Large | torchvision | 4.215      | **0.9518**   | 15.54         | `exp02_mobilenetv3large`       |
-| exp03 â˜…â˜… | EfficientNet-B0   | torchvision | 4.020      | **0.9609**   | 25.79         | `exp03_efficientnetb0`         |
-| exp04    | MobileViT-XXS     | timm        | 0.954      | 0.9227       | 21.57         | `exp04_mobilevit_xxs_baseline` |
+| ID | Model | Source | Params (M) | Val macro-F1 | CPU mean (ms) | Branch |
+| --- | --- | --- | ---: | ---: | ---: | --- |
+| exp01 | MobileNetV3-Small | torchvision | 1.528 | 0.9251 | 8.28 | `exp01_mobilenetv3small` |
+| exp02 | MobileNetV3-Large | torchvision | 4.215 | 0.9518 | 15.54 | `exp02_mobilenetv3large` |
+| exp03 | EfficientNet-B0 | torchvision | 4.020 | 0.9609 | 25.79 | `exp03_efficientnetb0` |
+| exp04 | MobileViT-XXS | timm | 0.954 | 0.9227 | 21.57 | `exp04_mobilevit_xxs_baseline` |
 
-Aggregated comparison (per-class F1, training curves, full cost table):
-[`results/phase1_bakeoff_report.md`](../results/phase1_bakeoff_report.md)
-on the `compare_models` branch.
+Phase 2 candidates selected:
 
-**Phase 2 candidates selected:** exp02 (best Pareto trade-off) and
-exp03 (highest absolute accuracy). Running both in parallel tracks so
-the data decides the production winner, not a guess.
+- exp02: best Pareto trade-off.
+- exp03: highest absolute validation macro-F1.
 
 ---
 
-## Phase 2 â€” Optimize the two winners (parallel tracks)
+## Phase 2 - Optimize the winners
 
-Each experiment isolates a single improvement on top of the prior. We run
-the same recipe on each track so the comparison stays clean.
+Each experiment isolates a single improvement on top of the prior. The two
+winner tracks should use comparable recipes when practical.
 
-### Track A â€” MobileNetV3-Large (built on exp02)
+### Track A - MobileNetV3-Large
 
-| ID    | Change vs prior                    | Hypothesis                                      | Branch                                  |
-| ----- | ---------------------------------- | ----------------------------------------------- | --------------------------------------- |
-| exp05 | + augmentation pipeline            | Reduces overfitting; lifts overall macro-F1     | `exp05_mobilenetv3large_augment`        |
-| exp06 | exp05 + weighted CrossEntropy      | Lifts minority-class recall (BLB, downy mildew) | `exp06_mobilenetv3large_weighted`       |
-| exp07 | exp06 + LR sweep                  | Tests whether LR tuning improves the current best MobileNet setup | `exp07_mobilenetv3large_lr_sweep`       |
-| exp08 | best LR + Dhan-Shomadhan eval/data decision | Tests deployment-style robustness after LR tuning | `exp08_mobilenetv3large_dhan`           |
+| ID | Change vs prior | Hypothesis | Branch | Status |
+| --- | --- | --- | --- | --- |
+| exp05 | exp02 + augmentation | Augmentation improves generalization | `exp05_mobilenetv3large_augmentation` | complete: 0.9573 macro-F1 |
+| exp06 | exp05 + weighted CrossEntropy | Weighted loss improves minority/fragile classes | `exp06_mobilenetv3large_weighted` | complete: 0.9670 macro-F1 |
+| exp07 | exp06 + LR sweep | LR tuning may improve the current best MobileNet setup | `exp07_mobilenetv3large_lr_sweep` | complete: best 0.9676 macro-F1, not meaningful vs exp06 |
+| exp08 | exp06/default LR + Dhan-Shomadhan eval/data decision | Test deployment-style robustness after the LR sweep | `exp08_mobilenetv3large_dhan` | planned |
 
-### Track B â€” EfficientNet-B0 (built on exp03)
+LR sweep result: exp07 compared high/default/low LR recipes on the current best
+MobileNetV3-Large setup. High LR was numerically best at 0.9676 macro-F1, but
+only +0.0006 over exp06 and below the +0.003 meaningful-gain threshold. Use the
+exp06 default LR recipe (`head_lr=3e-4`, `full_lr=5e-5`) as the conservative
+base unless future reruns confirm high LR consistently.
 
-| ID    | Change vs prior                    | Hypothesis                                                                   | Branch                                |
-| ----- | ---------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------- |
-| exp09 | + augmentation pipeline            | Same as exp05; B0 likely gains less (built-in regularization via SE + Swish) | `exp09_efficientnetb0_augment`        |
-| exp10 | exp09 + weighted CrossEntropy      | Same as exp06                                                                | `exp10_efficientnetb0_weighted`       |
-| exp11 | exp10 + Dhan-Shomadhan field added | Same as exp07                                                                | `exp11_efficientnetb0_dhan`           |
-| exp12 | exp11 + label smoothing (0.1)      | Optional, only if exp11 hasn't diverged from Track A                         | `exp12_efficientnetb0_labelsmoothing` |
+### Track B - EfficientNet-B0
 
+| ID | Change vs prior | Hypothesis | Branch | Status |
+| --- | --- | --- | --- | --- |
+| exp09 | exp03 + augmentation | Same question as exp05 for EfficientNet-B0 | `exp09_efficientnetb0_augmentation` | planned |
+| exp10 | exp09 + weighted CrossEntropy | Same question as exp06 for EfficientNet-B0 | `exp10_efficientnetb0_weighted` | planned |
+| exp11 | exp10 + Dhan-Shomadhan eval/data decision | Test deployment-style robustness | `exp11_efficientnetb0_dhan` | planned |
+| exp12 | exp11 + label smoothing | Optional calibration/accuracy check | `exp12_efficientnetb0_labelsmoothing` | optional |
 
-**LR sweep insertion:** exp07 is a diagnostic sweep on the current best MobileNetV3-Large setup (exp06). It compares high/default/low LR recipes before adding Dhan-Shomadhan or label smoothing. Keep the dataset fixed for exp07.
-Stop a track early if it hits diminishing returns (e.g. < +0.005 macro-F1
-on a step) or starts to overfit hard despite augmentation.
+Stop a track early if it hits diminishing returns, for example less than +0.005
+macro-F1 on a step, or starts to overfit hard despite augmentation.
 
-Both tracks merge into `compare_models` again after Phase 2 to build the
-Phase 2 comparison report (same pattern as Phase 1).
-
----
-
-## Phase 3 â€” Finalize
-
-Run on the **single cross-track winner** chosen from Phase 2.
-
-| Step                            | Action                                                                                        |
-| ------------------------------- | --------------------------------------------------------------------------------------------- |
-| Final test eval                 | `python scripts/evaluate_checkpoint.py --split test experiments/<winner>` â€” **one time only** |
-| Held-out "deployment-like" eval | Reserved ~100 Dhan-Shomadhan field images â€” never trained on                                  |
-| ONNX export                     | `experiments/<winner>/export_onnx.py`, verify shape + measure CPU latency                     |
-| `MODEL_CARD.md`                 | Write the public model card for HF Hub                                                        |
-| HF Hub upload                   | `huggingface-cli upload your-username/paddy-disease-model model.onnx`                         |
-| Notify integration              | Point the `krishidoc` product repo at the new model artifact                                  |
+Use Dhan-Shomadhan first as deployment-like validation/evaluation data. Do not
+merge it into training until a domain gap is demonstrated or a deliberate new
+dataset phase is started.
 
 ---
 
-## Branch convention
+## Phase 3 - Finalize
 
-- `main` â€” infrastructure only (`src/`, `data/`, `docs/`, `scripts/`, `results/`). No `experiments/` folders.
-- `expNN_<model>_<variant>` â€” one branch per experiment. Branch's `.gitignore` whitelists ONLY that experiment's folder.
-- `compare_models` â€” aggregated multi-experiment view. `.gitignore` whitelists all experiment folders pulled in.
+Run on the single cross-track winner chosen from Phase 2.
+
+| Step | Action |
+| --- | --- |
+| Final test eval | `python scripts/evaluate_checkpoint.py --split test experiments/<winner>` - one time only |
+| Deployment-like eval | Evaluate reserved Dhan-Shomadhan field images; do not train on them unless a new dataset phase is declared |
+| ONNX export | `experiments/<winner>/export_onnx.py`, verify shape and measure CPU latency |
+| Model card | Write `MODEL_CARD.md` for HF Hub |
+| HF Hub upload | Upload `model.onnx` and model card |
+| Integration handoff | Point the separate `krishidoc` product repo at the new model artifact |
+
+---
+
+## Branch Convention
+
+- `main` is for infrastructure only: `src/`, `data/`, `docs/`, `scripts/`, and canonical `results/`.
+- `expNN_<model>_<variant>` branches own one experiment folder.
+- If an experiment builds on the previous experiment in a track, branch from that previous experiment branch.
+- `compare_models` is the aggregation branch for reports and multi-experiment comparison.
 
 When creating a new experiment branch:
 
 ```bash
-git checkout main
+git checkout <previous-track-branch>
 git checkout -b expNN_<model>_<variant>
-# Update .gitignore on the new branch to whitelist experiments/expNN_<model>_<variant>/
-# Scaffold config.yaml, train.py, README.md
-# Run training, commit, push
+# Update .gitignore to whitelist the new experiment folder.
+# Scaffold config.yaml, train.py, expNN_README.md, and tmp log.
+# Run training, update docs/results, commit, push.
 ```
 
 ---
 
-## Design notes
+## Design Notes
 
-- **Input size 224Ã—224 for all models.** MobileViT natively prefers 256 â€” we override to 224 for fairness.
-- **Test set locked until Phase 3.** Every preview makes the final test number less trustworthy as an unbiased estimate.
-- **Each experiment auto-reports** params, MACs/FLOPs, checkpoint size, CPU + GPU inference latency, peak VRAM, total training time â€” captured in `metrics_val.json`. No manual benchmarking needed.
-- **Weights & Biases** is wired into every experiment. Flip `wandb_mode: "online"` in `config.yaml` after `wandb login` to enable live dashboards.
-- **Reproducibility:** every experiment uses `seed=42`, `cudnn.deterministic=True`, `cudnn.benchmark=False`. Retraining with the same toolchain reproduces results to ~0.001 F1.
+- Input size is 224x224 for all current model comparisons.
+- Test set is locked until Phase 3.
+- Primary metric is validation macro-F1.
+- Accuracy, per-class F1/recall, CPU latency, checkpoint size, and curves are supporting metrics.
+- Every experiment should auto-report params, MACs/FLOPs, checkpoint size, CPU/GPU inference latency, peak VRAM, and total training time in `metrics_val.json`.
+- W&B is available but should stay disabled unless login/setup is confirmed.
+- Reproducibility settings: `seed=42`, `cudnn.deterministic=True`, `cudnn.benchmark=False`.

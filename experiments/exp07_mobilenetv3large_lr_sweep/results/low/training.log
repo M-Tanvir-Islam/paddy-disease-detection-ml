@@ -1,0 +1,106 @@
+Epoch 001 | loss 1.9699 | val macro-F1 0.4342 | val acc 0.4536 | 77.9s
+  saved best checkpoint (val macro-F1: 0.4342)
+Epoch 002 | loss 1.3509 | val macro-F1 0.5915 | val acc 0.6195 | 74.5s
+  saved best checkpoint (val macro-F1: 0.5915)
+Epoch 003 | loss 1.0111 | val macro-F1 0.7207 | val acc 0.7322 | 75.8s
+  saved best checkpoint (val macro-F1: 0.7207)
+Epoch 004 | loss 0.8165 | val macro-F1 0.7740 | val acc 0.7828 | 75.0s
+  saved best checkpoint (val macro-F1: 0.7740)
+Epoch 005 | loss 0.6725 | val macro-F1 0.7993 | val acc 0.8097 | 75.8s
+  saved best checkpoint (val macro-F1: 0.7993)
+--- Phase B: unfreeze all, lr=1e-05, cosine annealing ---
+Epoch 006 | loss 0.5899 | val macro-F1 0.8170 | val acc 0.8277 | 75.1s
+  saved best checkpoint (val macro-F1: 0.8170)
+Epoch 007 | loss 0.5531 | val macro-F1 0.8294 | val acc 0.8366 | 75.1s
+  saved best checkpoint (val macro-F1: 0.8294)
+Epoch 008 | loss 0.5397 | val macro-F1 0.8345 | val acc 0.8405 | 76.0s
+  saved best checkpoint (val macro-F1: 0.8345)
+Epoch 009 | loss 0.5164 | val macro-F1 0.8402 | val acc 0.8456 | 75.2s
+  saved best checkpoint (val macro-F1: 0.8402)
+Epoch 010 | loss 0.4752 | val macro-F1 0.8417 | val acc 0.8463 | 76.0s
+  saved best checkpoint (val macro-F1: 0.8417)
+Epoch 011 | loss 0.4735 | val macro-F1 0.8489 | val acc 0.8520 | 75.0s
+  saved best checkpoint (val macro-F1: 0.8489)
+Epoch 012 | loss 0.4453 | val macro-F1 0.8540 | val acc 0.8584 | 75.6s
+  saved best checkpoint (val macro-F1: 0.8540)
+Epoch 013 | loss 0.4344 | val macro-F1 0.8575 | val acc 0.8616 | 75.1s
+  saved best checkpoint (val macro-F1: 0.8575)
+Epoch 014 | loss 0.4203 | val macro-F1 0.8591 | val acc 0.8629 | 75.7s
+  saved best checkpoint (val macro-F1: 0.8591)
+Epoch 015 | loss 0.4066 | val macro-F1 0.8631 | val acc 0.8687 | 74.9s
+  saved best checkpoint (val macro-F1: 0.8631)
+Epoch 016 | loss 0.3974 | val macro-F1 0.8667 | val acc 0.8712 | 75.5s
+  saved best checkpoint (val macro-F1: 0.8667)
+Epoch 017 | loss 0.3764 | val macro-F1 0.8728 | val acc 0.8751 | 75.2s
+  saved best checkpoint (val macro-F1: 0.8728)
+Epoch 018 | loss 0.3655 | val macro-F1 0.8712 | val acc 0.8751 | 75.1s
+Epoch 019 | loss 0.3599 | val macro-F1 0.8730 | val acc 0.8783 | 75.1s
+  saved best checkpoint (val macro-F1: 0.8730)
+Epoch 020 | loss 0.3555 | val macro-F1 0.8797 | val acc 0.8821 | 75.5s
+  saved best checkpoint (val macro-F1: 0.8797)
+Epoch 021 | loss 0.3430 | val macro-F1 0.8785 | val acc 0.8828 | 76.1s
+Epoch 022 | loss 0.3411 | val macro-F1 0.8836 | val acc 0.8879 | 74.7s
+  saved best checkpoint (val macro-F1: 0.8836)
+Epoch 023 | loss 0.3263 | val macro-F1 0.8838 | val acc 0.8879 | 75.8s
+  saved best checkpoint (val macro-F1: 0.8838)
+Epoch 024 | loss 0.3197 | val macro-F1 0.8853 | val acc 0.8892 | 74.9s
+  saved best checkpoint (val macro-F1: 0.8853)
+Epoch 025 | loss 0.3135 | val macro-F1 0.8865 | val acc 0.8911 | 75.9s
+  saved best checkpoint (val macro-F1: 0.8865)
+Epoch 026 | loss 0.3090 | val macro-F1 0.8906 | val acc 0.8949 | 74.9s
+  saved best checkpoint (val macro-F1: 0.8906)
+Epoch 027 | loss 0.3079 | val macro-F1 0.8900 | val acc 0.8949 | 75.3s
+Epoch 028 | loss 0.3056 | val macro-F1 0.8913 | val acc 0.8969 | 74.8s
+  saved best checkpoint (val macro-F1: 0.8913)
+Epoch 029 | loss 0.2912 | val macro-F1 0.8909 | val acc 0.8962 | 76.7s
+Epoch 030 | loss 0.2992 | val macro-F1 0.8940 | val acc 0.8981 | 74.9s
+  saved best checkpoint (val macro-F1: 0.8940)
+Epoch 031 | loss 0.2969 | val macro-F1 0.8929 | val acc 0.8975 | 75.6s
+Epoch 032 | loss 0.2811 | val macro-F1 0.8919 | val acc 0.8969 | 75.4s
+Epoch 033 | loss 0.2838 | val macro-F1 0.8959 | val acc 0.8994 | 76.0s
+  saved best checkpoint (val macro-F1: 0.8959)
+Epoch 034 | loss 0.2844 | val macro-F1 0.8966 | val acc 0.9007 | 75.7s
+  saved best checkpoint (val macro-F1: 0.8966)
+Epoch 035 | loss 0.2751 | val macro-F1 0.8975 | val acc 0.9013 | 75.1s
+  saved best checkpoint (val macro-F1: 0.8975)
+Epoch 036 | loss 0.2696 | val macro-F1 0.8981 | val acc 0.9020 | 75.9s
+  saved best checkpoint (val macro-F1: 0.8981)
+Epoch 037 | loss 0.2714 | val macro-F1 0.8979 | val acc 0.9020 | 75.1s
+Epoch 038 | loss 0.2751 | val macro-F1 0.8947 | val acc 0.8994 | 74.9s
+Epoch 039 | loss 0.2669 | val macro-F1 0.8986 | val acc 0.9020 | 75.8s
+  saved best checkpoint (val macro-F1: 0.8986)
+Epoch 040 | loss 0.2711 | val macro-F1 0.9006 | val acc 0.9039 | 75.0s
+  saved best checkpoint (val macro-F1: 0.9006)
+
+Training complete. Best val macro-F1: 0.9006 @ epoch 40. Total: 50.3 min, peak VRAM 1586.2 MB
+
+Loading best checkpoint for final val evaluation...
+
+Measuring model cost and inference latency...
+  params: 4.215 M  |  MACs: 0.234 G  |  ckpt: 17.07 MB
+  CPU latency (mean/p95): 16.22 / 23.57 ms
+  GPU latency (mean/p95): 10.64 / 12.31 ms
+                          precision    recall  f1-score   support
+
+   bacterial_leaf_blight     0.8378    0.8611    0.8493        72
+   bacterial_leaf_streak     0.9483    0.9649    0.9565        57
+bacterial_panicle_blight     0.9057    0.9412    0.9231        51
+                   blast     0.9243    0.8889    0.9062       261
+              brown_spot     0.8963    0.8345    0.8643       145
+              dead_heart     0.9767    0.9722    0.9745       216
+            downy_mildew     0.8218    0.8925    0.8557        93
+                   hispa     0.8952    0.8577    0.8761       239
+                  normal     0.9055    0.9432    0.9239       264
+                  tungro     0.8588    0.8957    0.8769       163
+
+                accuracy                         0.9039      1561
+               macro avg     0.8970    0.9052    0.9006      1561
+            weighted avg     0.9046    0.9039    0.9038      1561
+
+
+Best val macro-F1: 0.9006 @ epoch 40
+Results saved to: E:\GitHub\Personal\krishidoc_ml\experiments\exp07_mobilenetv3large_lr_sweep\results\low
+Full log:         E:\GitHub\Personal\krishidoc_ml\experiments\exp07_mobilenetv3large_lr_sweep\results\low\training.log
+
+Note: test set was NOT evaluated. Per protocol, test is locked until
+the final winning experiment.
