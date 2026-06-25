@@ -24,7 +24,7 @@ from torch.utils.data import DataLoader
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from src.augment import get_val_transforms  # noqa: E402
+from src.augment import get_eval_transforms  # noqa: E402
 from src.classes import CLASS_NAMES_EN, INPUT_SIZE, NUM_CLASSES  # noqa: E402
 from src.dataset import PaddyDataset  # noqa: E402
 from src.evaluate import (  # noqa: E402
@@ -104,8 +104,8 @@ def main() -> None:
 
     # --- Data ---
     csv_path = ROOT / config["data"]["split_csv"]
-    val_tf = get_val_transforms(INPUT_SIZE)
-    ds = PaddyDataset(csv_path=str(csv_path), split=args.split, transform=val_tf)
+    eval_tf = get_eval_transforms(INPUT_SIZE)
+    ds = PaddyDataset(csv_path=str(csv_path), split=args.split, transform=eval_tf)
     print(f"{args.split} set size: {len(ds)}")
 
     loader = DataLoader(

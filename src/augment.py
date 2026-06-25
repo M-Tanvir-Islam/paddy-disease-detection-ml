@@ -5,7 +5,7 @@ Baseline (augment=False): resize + normalize only.
 
 Experiment augmentation (augment=True): train-split-only transforms for exp05,
 matching the MobileNetV3-Large augmentation experiment. Validation and test
-always use the baseline transform.
+always use the deterministic evaluation transform.
 """
 
 import albumentations as A
@@ -40,8 +40,13 @@ def get_train_transforms(input_size: int = 224, augment: bool = False):
     ])
 
 
-def get_val_transforms(input_size: int = 224):
+def get_eval_transforms(input_size: int = 224):
     return _basic(input_size)
+
+
+def get_val_transforms(input_size: int = 224):
+    """Backward-compatible alias for deterministic evaluation preprocessing."""
+    return get_eval_transforms(input_size)
 
 
 def _basic(input_size: int):

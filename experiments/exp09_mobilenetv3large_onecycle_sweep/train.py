@@ -20,7 +20,7 @@ from torch.utils.data import DataLoader
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from src.augment import get_train_transforms, get_val_transforms  # noqa: E402
+from src.augment import get_eval_transforms, get_train_transforms  # noqa: E402
 from src.classes import CLASS_NAMES_EN, INPUT_SIZE, NUM_CLASSES  # noqa: E402
 from src.dataset import PaddyDataset  # noqa: E402
 from src.evaluate import (  # noqa: E402
@@ -221,12 +221,11 @@ def main() -> None:
 
     csv_path = ROOT / config["data"]["split_csv"]
     train_tf = get_train_transforms(INPUT_SIZE, augment=config["data"]["augmentation"])
-    val_tf = get_val_transforms(INPUT_SIZE)
+    eval_tf = get_eval_transforms(INPUT_SIZE)
 
     train_ds = PaddyDataset(csv_path=str(csv_path), split="train", transform=train_tf)
-    val_ds = PaddyDataset(csv_path=str(csv_path), split="val", transform=val_tf)
-    test_ds = PaddyDataset(csv_path=str(csv_path), split="test", transform=val_tf)
-    print(f"Train: {len(train_ds)}  Val: {len(val_ds)}  Test: {len(test_ds)}")
+    val_ds = PaddyDataset(csv_path=str(csv_path), split="val", transform=eval_tf)
+    print(f"Train: {len(train_ds)}  Val: {len(val_ds)}")
 
     nw = config["hardware"]["num_workers"]
     bs = config["training"]["batch_size"]
