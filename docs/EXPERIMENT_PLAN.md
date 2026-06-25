@@ -40,7 +40,7 @@ winner tracks should use comparable recipes when practical.
 | exp07 | exp06 + LR sweep | LR tuning may improve the current best MobileNet setup | `exp07_mobilenetv3large_lr_sweep` | complete elsewhere: best 0.9676 macro-F1, not meaningful vs exp06 |
 | exp08 | exp06 + OneCycleLR | Test whether OneCycleLR beats the conservative exp06 scheduler | `exp08_mobilenetv3large_onecycle` | complete: 0.9746 macro-F1, current best MobileNet |
 | exp09 | exp08 + OneCycle max_lr sweep | Tune OneCycleLR max_lr for the best MobileNet setup | `exp09_mobilenetv3large_onecycle_sweep` | complete: best 0.9779 macro-F1 |
-| exp10 | exp09 + input resolution sweep | Test whether 256 or 288 input improves small/texture-sensitive disease cues | `exp10_mobilenetv3large_resolution_sweep` | planned |
+| exp10 | exp09 + input resolution sweep | Test whether higher input improves small/texture-sensitive disease cues | `exp10_mobilenetv3large_resolution_sweep` | complete: 256 underperformed; keep 224 |
 
 LR sweep result: exp07 compared high/default/low LR recipes on the current best
 MobileNetV3-Large setup. High LR was numerically best at 0.9676 macro-F1, but
@@ -56,7 +56,7 @@ CPU latency. This beats exp08 by +0.0033 macro-F1 and becomes the current best
 MobileNetV3-Large configuration. Lower max_lr values underfit relative to exp08,
 while 2e-3 dropped below the 1.5e-3 result.
 
-Input resolution sweep plan: exp10 keeps exp09 fixed except `data.input_size`. Planned values are 256 and 288. A higher resolution should replace exp09 only if it improves macro-F1 by at least +0.002 to +0.003 without hurting weak classes or making CPU latency impractical.
+Input resolution sweep result: exp10 kept exp09 fixed except `data.input_size`. The 256 run reached 0.9718 macro-F1 and 17.90 ms CPU latency, which is -0.0061 macro-F1 and +2.88 ms versus exp09. Because the first higher-resolution run was clearly worse and slower, 288 was skipped. Keep exp09 at 224 as the best MobileNetV3-Large configuration.
 
 ### Track B - EfficientNet-B0
 
