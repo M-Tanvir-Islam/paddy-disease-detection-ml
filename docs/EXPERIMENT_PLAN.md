@@ -40,6 +40,7 @@ winner tracks should use comparable recipes when practical.
 | exp07 | exp06 + LR sweep | LR tuning may improve the current best MobileNet setup | `exp07_mobilenetv3large_lr_sweep` | complete elsewhere: best 0.9676 macro-F1, not meaningful vs exp06 |
 | exp08 | exp06 + OneCycleLR | Test whether OneCycleLR beats the conservative exp06 scheduler | `exp08_mobilenetv3large_onecycle` | complete: 0.9746 macro-F1, current best MobileNet |
 | exp09 | exp08 + OneCycle max_lr sweep | Tune OneCycleLR max_lr for the best MobileNet setup | `exp09_mobilenetv3large_onecycle_sweep` | complete: best 0.9779 macro-F1 |
+| exp10 | exp09 + input resolution sweep | Test whether 256 or 288 input improves small/texture-sensitive disease cues | `exp10_mobilenetv3large_resolution_sweep` | planned |
 
 LR sweep result: exp07 compared high/default/low LR recipes on the current best
 MobileNetV3-Large setup. High LR was numerically best at 0.9676 macro-F1, but
@@ -54,6 +55,9 @@ The best value was 1.5e-3 with 0.9779 macro-F1, 0.9763 accuracy, and 15.02 ms
 CPU latency. This beats exp08 by +0.0033 macro-F1 and becomes the current best
 MobileNetV3-Large configuration. Lower max_lr values underfit relative to exp08,
 while 2e-3 dropped below the 1.5e-3 result.
+
+Input resolution sweep plan: exp10 keeps exp09 fixed except `data.input_size`. Planned values are 256 and 288. A higher resolution should replace exp09 only if it improves macro-F1 by at least +0.002 to +0.003 without hurting weak classes or making CPU latency impractical.
+
 ### Track B - EfficientNet-B0
 
 | ID | Change vs prior | Hypothesis | Branch | Status |
@@ -108,7 +112,7 @@ git checkout -b expNN_<model>_<variant>
 
 ## Design Notes
 
-- Input size is 224x224 for all current model comparisons.
+- Input size is 224x224 through exp09. Exp10 deliberately sweeps 256x256 and 288x288 using the same best MobileNet recipe.
 - Test set is locked until Phase 3.
 - Primary metric is validation macro-F1.
 - Accuracy, per-class F1/recall, CPU latency, checkpoint size, and curves are supporting metrics.
