@@ -1,10 +1,10 @@
-# exp13 - MobileNetV3-Large OneCycleLR max_lr sweep (maxlr_3e4).
+# exp09 - MobileNetV3-Large OneCycleLR max_lr sweep (maxlr_2e3).
 # Base config: exp08. Sweep variable: onecycle_max_lr only.
 
 experiment:
-  id: "exp13"
-  name: "mobilenetv3large_onecycle_sweep_maxlr_3e4"
-  description: "MobileNetV3-Large, augmentation + weighted CrossEntropy, OneCycleLR max_lr sweep variant: 3e-4"
+  id: "exp09"
+  name: "mobilenetv3large_onecycle_sweep_maxlr_2e3"
+  description: "MobileNetV3-Large, augmentation + weighted CrossEntropy, OneCycleLR max_lr sweep variant: 2e-3"
 
 model:
   name: "mobilenet_v3_large"
@@ -23,7 +23,7 @@ training:
   batch_size: 64
   warmup_epochs: 5
   lr_head: 3.0e-4
-  onecycle_max_lr: 3.0e-4
+  onecycle_max_lr: 2.0e-3
   onecycle_pct_start: 0.1
   onecycle_div_factor: 25.0
   onecycle_final_div_factor: 10000.0
@@ -35,10 +35,10 @@ hardware:
 
 logging:
   wandb_project: "krishidoc"
-  wandb_run_name: "exp13_mobilenetv3large_onecycle_sweep_maxlr_3e4"
+  wandb_run_name: "exp09_mobilenetv3large_onecycle_sweep_maxlr_2e3"
   # Change to "online" after wandb login. Use "disabled" to skip W&B entirely.
   wandb_mode: "disabled"
 
 output:
-  checkpoint_path: "checkpoints/exp13_maxlr_3e4_best.pt"
-  results_dir: "experiments/exp13_mobilenetv3large_onecycle_sweep/results/maxlr_3e4/"
+  checkpoint_path: "checkpoints/exp09_maxlr_2e3_best.pt"
+  results_dir: "experiments/exp09_mobilenetv3large_onecycle_sweep/results/maxlr_2e3/"

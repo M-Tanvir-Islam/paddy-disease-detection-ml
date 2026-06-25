@@ -1,4 +1,4 @@
-# exp13 - MobileNetV3-Large OneCycleLR max_lr Sweep
+# exp09 - MobileNetV3-Large OneCycleLR max_lr Sweep
 
 ## Purpose
 
@@ -43,11 +43,11 @@ Run from repo root:
 ```powershell
 conda activate krishidoc_ml
 
-python experiments/exp13_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_3e4.yaml
-python experiments/exp13_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_5e4.yaml
-python experiments/exp13_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_1e3.yaml
-python experiments/exp13_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_15e4.yaml
-python experiments/exp13_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_2e3.yaml
+python experiments/exp09_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_3e4.yaml
+python experiments/exp09_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_5e4.yaml
+python experiments/exp09_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_1e3.yaml
+python experiments/exp09_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_15e4.yaml
+python experiments/exp09_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_2e3.yaml
 ```
 
 ## What To Compare

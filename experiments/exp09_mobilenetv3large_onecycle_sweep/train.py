@@ -1,8 +1,8 @@
 """
-exp13 - MobileNetV3-Large OneCycleLR max_lr sweep.
+exp09 - MobileNetV3-Large OneCycleLR max_lr sweep.
 
 Run from repo root:
-    python experiments/exp13_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_1e3.yaml
+    python experiments/exp09_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_1e3.yaml
 """
 
 import argparse

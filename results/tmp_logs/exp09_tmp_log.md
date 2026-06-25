@@ -1,4 +1,4 @@
-# exp13 tmp log
+# exp09 tmp log
 
 Branch-local notes for MobileNetV3-Large OneCycleLR max_lr sweep.
 
@@ -20,11 +20,11 @@ Find whether tuning OneCycleLR `max_lr` improves over exp08.
 
 ```powershell
 conda activate krishidoc_ml
-python experiments/exp13_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_3e4.yaml
-python experiments/exp13_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_5e4.yaml
-python experiments/exp13_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_1e3.yaml
-python experiments/exp13_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_15e4.yaml
-python experiments/exp13_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_2e3.yaml
+python experiments/exp09_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_3e4.yaml
+python experiments/exp09_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_5e4.yaml
+python experiments/exp09_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_1e3.yaml
+python experiments/exp09_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_15e4.yaml
+python experiments/exp09_mobilenetv3large_onecycle_sweep/train.py --config configs/maxlr_2e3.yaml
 ```
 
 ## Notes
