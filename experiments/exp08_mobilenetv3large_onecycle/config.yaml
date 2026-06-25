@@ -1,0 +1,45 @@
+# exp08 - MobileNetV3-Large with augmentation + weighted loss + OneCycleLR.
+# Base config: exp06 default LR recipe. One-variable change: scheduler in full fine-tuning phase.
+
+experiment:
+  id: "exp08"
+  name: "mobilenetv3large_onecycle"
+  description: "MobileNetV3-Large, augmentation + weighted CrossEntropy, OneCycleLR after head warmup"
+
+model:
+  name: "mobilenet_v3_large"
+  source: "torchvision.models"
+  pretrained: true
+  pretrained_weights: "IMAGENET1K_V1"
+
+data:
+  dataset: "kaggle_paddy_2022"
+  split_csv: "data/splits/kaggle.csv"
+  augmentation: true
+  weighted_loss: true
+
+training:
+  epochs: 40
+  batch_size: 64
+  warmup_epochs: 5
+  lr_head: 3.0e-4
+  # OneCycleLR applies only after unfreezing, during epochs warmup_epochs..epochs.
+  onecycle_max_lr: 1.0e-3
+  onecycle_pct_start: 0.1
+  onecycle_div_factor: 25.0
+  onecycle_final_div_factor: 10000.0
+  weight_decay: 1.0e-2
+  seed: 42
+
+hardware:
+  num_workers: 4
+
+logging:
+  wandb_project: "krishidoc"
+  wandb_run_name: "exp08_mobilenetv3large_onecycle"
+  # Change to "online" after `wandb login`. Use "disabled" to skip W&B entirely.
+  wandb_mode: "disabled"
+
+output:
+  checkpoint_path: "checkpoints/exp08_best.pt"
+  results_dir: "experiments/exp08_mobilenetv3large_onecycle/results/"
