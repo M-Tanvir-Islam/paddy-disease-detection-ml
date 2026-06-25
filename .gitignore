@@ -9,7 +9,7 @@ checkpoints/
 *.pth
 *.onnx
 
-# Experiment folders: this branch tracks exp02 baseline context, exp05, and exp06.
+# Experiment folders: this branch tracks exp02 baseline context, exp05, exp06, and exp07.
 # Keep other experiment folders ignored so stray `git add .` cannot pull them in.
 experiments/*
 !experiments/exp02_mobilenetv3large_baseline/
@@ -18,6 +18,8 @@ experiments/*
 !experiments/exp05_mobilenetv3large_augmentation/**
 !experiments/exp06_mobilenetv3large_weighted/
 !experiments/exp06_mobilenetv3large_weighted/**
+!experiments/exp07_mobilenetv3large_lr_sweep/
+!experiments/exp07_mobilenetv3large_lr_sweep/**
 
 # Local W&B run cache (per-machine, never committed)
 wandb/

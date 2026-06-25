@@ -1,0 +1,42 @@
+# exp07 - MobileNetV3-Large LR sweep (default).
+# Base config: exp06 augmentation + weighted CrossEntropy.
+# Sweep variable: lr_head / lr_full only.
+
+experiment:
+  id: "exp07"
+  name: "mobilenetv3large_lr_sweep_default"
+  description: "MobileNetV3-Large, augmentation + weighted loss, LR sweep variant: default"
+
+model:
+  name: "mobilenet_v3_large"
+  source: "torchvision.models"
+  pretrained: true
+  pretrained_weights: "IMAGENET1K_V1"
+
+data:
+  dataset: "kaggle_paddy_2022"
+  split_csv: "data/splits/kaggle.csv"
+  augmentation: true
+  weighted_loss: true
+
+training:
+  epochs: 40
+  batch_size: 64
+  warmup_epochs: 5
+  lr_head: 3.0e-4
+  lr_full: 5.0e-5
+  weight_decay: 1.0e-2
+  seed: 42
+
+hardware:
+  num_workers: 4
+
+logging:
+  wandb_project: "krishidoc"
+  wandb_run_name: "exp07_mobilenetv3large_lr_sweep_default"
+  # Change to "online" after wandb login. Use "disabled" to skip W&B entirely.
+  wandb_mode: "disabled"
+
+output:
+  checkpoint_path: "checkpoints/exp07_default_best.pt"
+  results_dir: "experiments/exp07_mobilenetv3large_lr_sweep/results/default/"
