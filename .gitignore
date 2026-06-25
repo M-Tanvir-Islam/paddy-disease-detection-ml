@@ -21,6 +21,13 @@ experiments/*
 !experiments/exp03_efficientnetb0_baseline/**
 !experiments/exp04_mobilevit_xxs_baseline/
 !experiments/exp04_mobilevit_xxs_baseline/**
+!experiments/exp10_mobilenetv3large_resolution_sweep/
+!experiments/exp10_mobilenetv3large_resolution_sweep/exp10_README.md
+!experiments/exp10_mobilenetv3large_resolution_sweep/results/
+!experiments/exp10_mobilenetv3large_resolution_sweep/results/input_256/
+!experiments/exp10_mobilenetv3large_resolution_sweep/results/input_256/metrics_val.json
+!experiments/exp10_mobilenetv3large_resolution_sweep/results/input_256/confusion_matrix_val.png
+!experiments/exp10_mobilenetv3large_resolution_sweep/results/input_256/training_curves.png
 
 # Local W&B run cache (per-machine, never committed)
 wandb/
