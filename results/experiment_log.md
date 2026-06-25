@@ -32,7 +32,7 @@ exp03 as the highest validation macro-F1 model.
 | exp06 | MobileNetV3-Large | Yes | Yes | head 3e-4 / full 5e-5 | 224 | 0.9670 | 0.9673 | 19.89 | +0.0097 vs exp05 |
 | exp07 | MobileNetV3-Large LR sweep | Yes | Yes | best: head 1e-3 / full 1e-4 | 224 | 0.9676 | 0.9693 | 16.35 | +0.0006 vs exp06 |
 | exp08 | MobileNetV3-Large OneCycleLR | Yes | Yes | OneCycle max_lr 1e-3 | 224 | 0.9746 | 0.9750 | 15.83 | +0.0076 vs exp06 |
-| exp09 | MobileNetV3-Large OneCycle max_lr sweep | Yes | Yes | max_lr sweep | 224 | - | - | - | pending vs exp08 |
+| exp09 | MobileNetV3-Large OneCycle max_lr sweep | Yes | Yes | best OneCycle max_lr 1.5e-3 | 224 | 0.9779 | 0.9763 | 15.02 | +0.0033 vs exp08 |
 
 ### Track B - EfficientNet-B0
 

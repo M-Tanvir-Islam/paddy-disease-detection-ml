@@ -65,8 +65,27 @@ A variant should replace exp08 only if it reaches at least 0.9770 validation mac
 
 ## Result
 
-Pending.
+Completed. The `maxlr_15e4` variant is the winner.
+
+| Variant | onecycle_max_lr | Val macro-F1 | Val Acc | CPU ms | Best epoch | downy_mildew F1 | hispa F1 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| maxlr_3e4 | 3e-4 | 0.9686 | 0.9699 | 15.97 | 35 | 0.9149 | 0.9520 |
+| maxlr_5e4 | 5e-4 | 0.9683 | 0.9705 | 15.67 | 30 | 0.9405 | 0.9600 |
+| maxlr_1e3 | 1e-3 | 0.9749 | 0.9744 | 16.84 | 33 | 0.9508 | 0.9627 |
+| maxlr_15e4 | 1.5e-3 | 0.9779 | 0.9763 | 15.02 | 31 | 0.9622 | 0.9617 |
+| maxlr_2e3 | 2e-3 | 0.9733 | 0.9725 | 16.01 | 32 | 0.9565 | 0.9542 |
+
+Compared with exp08, the best variant improved validation macro-F1 from 0.9746
+to 0.9779, a +0.0033 gain. It also improved downy_mildew F1 from 0.9524 to
+0.9622. Checkpoint size stayed 17.07 MB and CPU latency was 15.02 ms in the
+validation measurement.
+
+The 2e-3 run did not improve over 1.5e-3, so 1.5e-3 is the best observed
+OneCycleLR `max_lr` for the MobileNetV3-Large track.
 
 ## Next Step
 
-If a clear winner appears, optionally run a narrower second sweep around that max_lr. Otherwise keep exp08 as the best MobileNet configuration and move to EfficientNet-B0 or Dhan-Shomadhan holdout validation.
+Use `maxlr_15e4` as the current best MobileNetV3-Large configuration. The next
+practical step is to move to the EfficientNet-B0 track using the same staged
+recipe, then compare the best MobileNet and EfficientNet candidates before
+touching the locked test set.
