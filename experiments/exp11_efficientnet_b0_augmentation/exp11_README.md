@@ -55,8 +55,17 @@ Augmentation is worth keeping if validation macro-F1 improves meaningfully over 
 
 ## Result
 
-Pending.
+Completed. The MobileNet augmentation recipe did not help EfficientNet-B0 in this run.
+
+| Experiment | Aug | WL | Val macro-F1 | Val Acc | CPU ms | CPU p95 ms | Best epoch | downy_mildew F1 | hispa F1 | Notes |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| exp03 baseline | No | No | 0.9609 | 0.9641 | 25.79 | 32.80 | 30 | 0.9189 | 0.9538 | baseline |
+| exp11 | Yes | No | 0.9469 | 0.9520 | 24.35 | 30.74 | 37 | 0.8663 | 0.9522 | worse macro-F1 |
+
+Compared with exp03, exp11 changed validation macro-F1 by -0.0140. The biggest concern is downy_mildew F1, which dropped from 0.9189 to 0.8663. CPU latency stayed similar and slightly lower in this measurement, but the accuracy trade-off is not acceptable by itself.
+
+This suggests EfficientNet-B0 may be more sensitive to the current augmentation recipe than MobileNetV3-Large, or that weighted loss/scheduler changes are needed before the augmentation recipe becomes useful.
 
 ## Next Step
 
-If augmentation helps, create `exp12_efficientnet_b0_weighted` from this branch and add weighted CrossEntropy. If it clearly hurts, reconsider whether EfficientNet-B0 needs a lighter augmentation recipe before continuing.
+Create `exp12_efficientnet_b0_weighted` from this branch and add weighted CrossEntropy to answer the planned question: does weighted loss recover or improve performance on top of augmentation? If exp12 also underperforms exp03, consider either a lighter EfficientNet-specific augmentation recipe or stopping the EfficientNet track early.
