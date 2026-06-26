@@ -1,0 +1,78 @@
+{
+  "macro_f1": 0.9700536499526414,
+  "accuracy": 0.9718129404228059,
+  "top_2_accuracy": 0.9929532351057014,
+  "top_3_accuracy": 0.9967969250480462,
+  "macro_auc_ovr": 0.9987261191352192,
+  "per_class_f1": {
+    "bacterial_leaf_blight": 0.958904109589041,
+    "bacterial_leaf_streak": 0.991304347826087,
+    "bacterial_panicle_blight": 0.9803921568627451,
+    "blast": 0.9693486590038314,
+    "brown_spot": 0.971830985915493,
+    "dead_heart": 0.9976798143851509,
+    "downy_mildew": 0.9263157894736842,
+    "hispa": 0.968421052631579,
+    "normal": 0.9792843691148776,
+    "tungro": 0.9570552147239264
+  },
+  "per_class_precision": {
+    "bacterial_leaf_blight": 0.9459459459459459,
+    "bacterial_leaf_streak": 0.9827586206896551,
+    "bacterial_panicle_blight": 0.9803921568627451,
+    "blast": 0.9693486590038314,
+    "brown_spot": 0.9928057553956835,
+    "dead_heart": 1.0,
+    "downy_mildew": 0.9072164948453608,
+    "hispa": 0.9745762711864406,
+    "normal": 0.9737827715355806,
+    "tungro": 0.9570552147239264
+  },
+  "per_class_recall": {
+    "bacterial_leaf_blight": 0.9722222222222222,
+    "bacterial_leaf_streak": 1.0,
+    "bacterial_panicle_blight": 0.9803921568627451,
+    "blast": 0.9693486590038314,
+    "brown_spot": 0.9517241379310345,
+    "dead_heart": 0.9953703703703703,
+    "downy_mildew": 0.946236559139785,
+    "hispa": 0.9623430962343096,
+    "normal": 0.9848484848484849,
+    "tungro": 0.9570552147239264
+  },
+  "model_cost": {
+    "total_params_M": 4.02,
+    "trainable_params_M": 4.02,
+    "macs_G": 0.414,
+    "flops_G": 0.828,
+    "checkpoint_size_MB": 16.38
+  },
+  "inference_latency_cpu": {
+    "device": "cpu",
+    "batch_size": 1,
+    "input_size": 224,
+    "num_runs": 50,
+    "mean_ms": 26.01,
+    "std_ms": 3.99,
+    "p50_ms": 25.56,
+    "p95_ms": 34.85
+  },
+  "inference_latency_gpu": {
+    "device": "cuda",
+    "batch_size": 1,
+    "input_size": 224,
+    "num_runs": 50,
+    "mean_ms": 13.32,
+    "std_ms": 0.26,
+    "p50_ms": 13.28,
+    "p95_ms": 13.78
+  },
+  "training": {
+    "total_seconds": 3076.7,
+    "mean_epoch_seconds": 76.92,
+    "peak_vram_MB": 2977.0,
+    "best_epoch": 36,
+    "num_epochs": 40,
+    "scheduler": "OneCycleLR"
+  }
+}

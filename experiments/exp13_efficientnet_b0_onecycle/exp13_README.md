@@ -63,8 +63,18 @@ OneCycleLR is useful only if it clearly improves over exp12. To continue this re
 
 ## Result
 
-Pending.
+Completed. OneCycleLR rescued the EfficientNet-B0 augmentation + weighted-loss recipe and beat the exp03 baseline.
+
+| Experiment | Aug | WL | LR config | Val macro-F1 | Val Acc | CPU ms | CPU p95 ms | Best epoch | downy_mildew F1 | hispa F1 | Notes |
+| --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| exp03 baseline | No | No | head 3e-4 / full 5e-5 | 0.9609 | 0.9641 | 25.79 | 32.80 | 30 | 0.9189 | 0.9538 | baseline |
+| exp12 | Yes | Yes | head 3e-4 / full 5e-5 | 0.9329 | 0.9379 | 24.07 | 31.30 | 38 | 0.8796 | 0.9409 | weak scheduler result |
+| exp13 | Yes | Yes | OneCycle max_lr 1e-3 | 0.9701 | 0.9718 | 26.01 | 34.85 | 36 | 0.9263 | 0.9684 | best EfficientNet so far |
+
+Compared with exp12, exp13 improved validation macro-F1 by +0.0372. Compared with exp03, it improved by +0.0092. It also improved downy_mildew F1 above exp03 and hispa F1 above exp03.
+
+The trade-off is latency: CPU mean is 26.01 ms, still well under the 500 ms production budget but slower than the selected MobileNet exp09 result at 15.02 ms.
 
 ## Next Step
 
-If OneCycleLR is competitive, create `exp14_efficientnet_b0_onecycle_sweep` and tune `onecycle_max_lr`. If it remains below exp03, stop the current EfficientNet augmentation + weighted-loss recipe.
+Create `exp14_efficientnet_b0_onecycle_sweep` from this branch and tune `onecycle_max_lr`. The starting value 1e-3 is strong, so use a narrow sweep around it rather than a large search.

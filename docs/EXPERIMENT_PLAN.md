@@ -63,12 +63,14 @@ EfficientNet branch.
 | --- | --- | --- | --- | --- |
 | exp11 | exp03 + augmentation | Test whether the MobileNet augmentation recipe also improves EfficientNet-B0 | `exp11_efficientnet_b0_augmentation` | complete: 0.9469 macro-F1; under exp03 |
 | exp12 | exp11 + weighted CrossEntropy | Test whether weighted loss improves fragile/minority classes on top of augmentation | `exp12_efficientnet_b0_weighted` | complete: 0.9329 macro-F1; under exp11 and exp03 |
-| exp13 | exp12 + OneCycleLR | Test whether OneCycleLR improves EfficientNet-B0 fine-tuning | `exp13_efficientnet_b0_onecycle` | planned |
+| exp13 | exp12 + OneCycleLR | Test whether OneCycleLR improves EfficientNet-B0 fine-tuning | `exp13_efficientnet_b0_onecycle` | complete: 0.9701 macro-F1; best EfficientNet so far |
 | exp14 | exp13 + OneCycle max_lr sweep | Tune OneCycleLR max_lr for the best EfficientNet-B0 setup | `exp14_efficientnet_b0_onecycle_sweep` | planned |
 
 EfficientNet augmentation result: exp11 added the MobileNet train-only augmentation recipe to exp03 and dropped to 0.9469 macro-F1, -0.0140 versus the 0.9609 exp03 baseline. Continue to exp12 only to test whether weighted loss recovers weak-class behavior on top of augmentation; if exp12 also underperforms, consider lighter EfficientNet-specific augmentation or stopping the track.
 
 EfficientNet weighted-loss result: exp12 added weighted CrossEntropy on top of exp11 and dropped to 0.9329 macro-F1, -0.0140 versus exp11 and -0.0280 versus exp03. Continue to exp13 only as a scheduler rescue/check. If exp13 also underperforms exp03, stop this EfficientNet recipe or design a lighter EfficientNet-specific augmentation experiment.
+
+EfficientNet OneCycle result: exp13 replaced the conservative full fine-tuning scheduler with OneCycleLR at max_lr 1e-3 and reached 0.9701 macro-F1, +0.0372 versus exp12 and +0.0092 versus exp03. Continue to exp14 with a narrow OneCycle max_lr sweep around 1e-3.
 
 EfficientNet control rules:
 
