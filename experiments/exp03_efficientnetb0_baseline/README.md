@@ -39,22 +39,24 @@ candidates because of higher MACs. CPU latency expected near 30–40 ms
 
 ## Results
 
-_Fill in after training completes._
+Completed. EfficientNet-B0 produced the highest Phase 1 validation macro-F1,
+but with higher CPU latency than MobileNetV3-Large.
 
 | Metric                   | Value |
 | ------------------------ | ----- |
-| Val macro-F1             | _TBD_ |
-| Val accuracy             | _TBD_ |
-| Top-2 / Top-3 accuracy   | _TBD_ |
-| Macro AUC-OvR            | _TBD_ |
-| Best epoch               | _TBD_ |
-| Total params             | _TBD_ |
-| MACs                     | _TBD_ |
-| Checkpoint size          | _TBD_ |
-| CPU latency (mean / p95) | _TBD_ |
-| GPU latency (mean / p95) | _TBD_ |
-| Total training time      | _TBD_ |
-| Peak VRAM                | _TBD_ |
+| Val macro-F1             | 0.9609 |
+| Val accuracy             | 0.9641 |
+| Top-2 / Top-3 accuracy   | 0.9865 / 0.9936 |
+| Macro AUC-OvR            | 0.9979 |
+| Best epoch               | 30 |
+| Total params             | 4.020 M |
+| MACs                     | 0.414 G |
+| FLOPs                    | 0.828 G |
+| Checkpoint size          | 16.38 MB |
+| CPU latency (mean / p95) | 25.79 / 32.80 ms |
+| GPU latency (mean / p95) | 12.64 / 13.17 ms |
+| Total training time      | 3069.6 s |
+| Peak VRAM                | 2977.0 MB |
 
 ## Confusion matrix
 
@@ -62,12 +64,11 @@ See `results/confusion_matrix_val.png`.
 
 ## What actually happened
 
-_2–3 sentences after the run. Compare against exp01 (0.9251) and exp02 (0.9518)._
+EfficientNet-B0 reached 0.9609 validation macro-F1, beating MobileNetV3-Small by +0.0358 and MobileNetV3-Large baseline by +0.0091. It was slower on CPU than MobileNetV3-Large baseline, but still far below the 500 ms production budget.
 
 ## Key insight
 
-_One takeaway. Is the EfficientNet family worth the extra compute over
-MobileNetV3-Large?_
+EfficientNet-B0 is worth optimizing because it started with the highest Phase 1 macro-F1. The trade-off is latency: 25.79 ms CPU versus 15.54 ms for MobileNetV3-Large baseline, so future EfficientNet gains must justify the extra compute.
 
 ## If this model wins the bake-off — optimization plan
 
