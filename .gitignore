@@ -9,12 +9,14 @@ checkpoints/
 *.pth
 *.onnx
 
-# Experiment folders: this branch (exp03_efficientnetb0) tracks ONLY exp03.
+# Experiment folders: this branch tracks exp03 baseline context and exp11.
 # All other experiment folders stay ignored so a stray `git add .` can't
 # accidentally pull them in. Update this section on each new experiment branch.
 experiments/*
 !experiments/exp03_efficientnetb0_baseline/
 !experiments/exp03_efficientnetb0_baseline/**
+!experiments/exp11_efficientnet_b0_augmentation/
+!experiments/exp11_efficientnet_b0_augmentation/**
 
 # Local W&B run cache (per-machine, never committed)
 wandb/

@@ -1,0 +1,40 @@
+# exp11 - EfficientNet-B0 + augmentation.
+# Base config: exp03. Changed variable: data.augmentation only.
+
+experiment:
+  id: "exp11"
+  name: "efficientnet_b0_augmentation"
+  description: "EfficientNet-B0 with train-only augmentation, no weighted loss"
+
+model:
+  name: "efficientnet_b0"
+  source: "torchvision.models"
+  pretrained: true
+  pretrained_weights: "IMAGENET1K_V1"
+
+data:
+  dataset: "kaggle_paddy_2022"
+  split_csv: "data/splits/kaggle.csv"
+  augmentation: true
+  weighted_loss: false
+
+training:
+  epochs: 40
+  batch_size: 64
+  warmup_epochs: 5
+  lr_head: 3.0e-4
+  lr_full: 5.0e-5
+  weight_decay: 1.0e-2
+  seed: 42
+
+hardware:
+  num_workers: 4
+
+logging:
+  wandb_project: "krishidoc"
+  wandb_run_name: "exp11_efficientnet_b0_augmentation"
+  wandb_mode: "disabled"
+
+output:
+  checkpoint_path: "checkpoints/exp11_best.pt"
+  results_dir: "experiments/exp11_efficientnet_b0_augmentation/results/"
