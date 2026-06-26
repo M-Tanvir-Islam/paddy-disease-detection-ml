@@ -5,6 +5,7 @@ Run from repo root:
     python experiments/exp14_efficientnet_b0_onecycle_sweep/train.py --config configs/maxlr_1e3.yaml
 """
 
+import argparse
 import sys
 import time
 from pathlib import Path
