@@ -6,36 +6,35 @@ experiment discipline used for the MobileNetV3-Large track.
 
 ## Current State
 
-EfficientNet-B0 baseline is already complete:
+EfficientNet-B0 tuning is complete through exp14.
 
 ```text
-Experiment:        exp03
-Branch:            exp03_efficientnet_b0
-Model:             EfficientNet-B0
-Augmentation:      no
-Weighted loss:     no
-Input size:        224
-LR config:         head 3e-4 / full 5e-5
-Val macro-F1:      0.9609
-Val accuracy:      0.9641
-CPU latency:       25.79 ms
+Best EfficientNet experiment: exp14
+Branch:                       exp14_efficientnet_b0_onecycle_sweep
+Model:                        EfficientNet-B0
+Augmentation:                 yes
+Weighted loss:                yes
+Input size:                   224
+LR config:                    OneCycleLR max_lr 5e-4
+Val macro-F1:                 0.9713
+Val accuracy:                 0.9744
+CPU latency:                  24.01 ms
 ```
 
 MobileNetV3-Large has already been optimized through exp10. The best MobileNet
-method is exp09 `maxlr_15e4` with 0.9779 validation macro-F1. EfficientNet-B0
-now needs comparable tuning before choosing the cross-track winner.
+method is exp09 `maxlr_15e4` with 0.9779 validation macro-F1 and 15.02 ms CPU
+latency. EfficientNet-B0 exp14 is the EfficientNet representative, but it does
+not beat the MobileNet candidate.
 
 ## Important Branch Rule
 
-Start EfficientNet work from:
+EfficientNet work started from:
 
 ```powershell
 git checkout exp03_efficientnet_b0
 ```
 
-Do not create EfficientNet branches from MobileNet branches. After the first
-EfficientNet optimization branch, create each next branch from the nearest prior
-EfficientNet branch.
+Do not create EfficientNet branches from MobileNet branches. This completed track used the nearest prior EfficientNet branch for each follow-up experiment.
 
 Correct lineage:
 
@@ -47,7 +46,7 @@ exp03_efficientnet_b0
               -> exp14_efficientnet_b0_onecycle_sweep
 ```
 
-## Planned Experiments
+## Completed Experiments
 
 ### exp11_efficientnet_b0_augmentation
 
@@ -132,8 +131,7 @@ Use the exp09 MobileNet sweep pattern as a template. Good starting candidates:
 1.5e-3
 ```
 
-Only add 2e-3 if 1.5e-3 looks stable. EfficientNet-B0 may not tolerate the same
-max learning rate as MobileNetV3-Large.
+Completed result: `5e-4` was best with 0.9713 macro-F1. `1e-3` reached 0.9633 in the repeat, and `1.5e-3` reached 0.9697. Do not add `2e-3` unless a new EfficientNet-specific hypothesis is approved.
 
 ## Experiment Rules
 
@@ -185,7 +183,7 @@ python experiments/exp14_efficientnet_b0_onecycle_sweep/train.py --config config
 
 ## Comparison Target
 
-The EfficientNet-B0 track must beat or justify itself against:
+The EfficientNet-B0 representative must be compared against:
 
 ```text
 MobileNet exp09 maxlr_15e4
@@ -195,6 +193,4 @@ Checkpoint: 17.07 MB
 Input: 224
 ```
 
-EfficientNet-B0 may be accepted even if slightly slower, but only if it gives a
-meaningful validation macro-F1 or weak-class improvement and still satisfies the
-production CPU and model-size constraints.
+Current conclusion: EfficientNet-B0 exp14 does not beat MobileNet exp09 on validation macro-F1 or CPU latency. Use exp14 only as the EfficientNet representative in comparison reports.
