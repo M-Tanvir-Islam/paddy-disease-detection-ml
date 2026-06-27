@@ -1,16 +1,16 @@
-# Datasets — too large to commit; download/place locally
+# Datasets - too large to commit; download/place locally
 datasets/
 data/raw/
 data/processed/
 
-# Model checkpoints — large binaries, host on HF Hub
+# Model checkpoints - large binaries, host on HF Hub
 checkpoints/
 *.pt
 *.pth
 *.onnx
 
-# Experiment folders: this branch (compare_models) tracks ALL Phase 1
-# bake-off experiments so a side-by-side comparison can be produced.
+# Experiment folders: this branch (compare_models) tracks Phase 1 bake-off
+# evidence plus selected Phase 2 winner/comparison folders.
 # Each individual exp branch still tracks ONLY its own folder.
 experiments/*
 !experiments/exp01_mobilenetv3small_baseline/
@@ -21,6 +21,8 @@ experiments/*
 !experiments/exp03_efficientnetb0_baseline/**
 !experiments/exp04_mobilevit_xxs_baseline/
 !experiments/exp04_mobilevit_xxs_baseline/**
+!experiments/exp09_mobilenetv3large_onecycle_sweep/
+!experiments/exp09_mobilenetv3large_onecycle_sweep/**
 !experiments/exp10_mobilenetv3large_resolution_sweep/
 !experiments/exp10_mobilenetv3large_resolution_sweep/exp10_README.md
 !experiments/exp10_mobilenetv3large_resolution_sweep/results/
@@ -28,6 +30,8 @@ experiments/*
 !experiments/exp10_mobilenetv3large_resolution_sweep/results/input_256/metrics_val.json
 !experiments/exp10_mobilenetv3large_resolution_sweep/results/input_256/confusion_matrix_val.png
 !experiments/exp10_mobilenetv3large_resolution_sweep/results/input_256/training_curves.png
+!experiments/exp14_efficientnet_b0_onecycle_sweep/
+!experiments/exp14_efficientnet_b0_onecycle_sweep/**
 
 # Local W&B run cache (per-machine, never committed)
 wandb/

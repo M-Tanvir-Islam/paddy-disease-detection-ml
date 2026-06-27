@@ -1,0 +1,43 @@
+# exp14 - EfficientNet-B0 OneCycleLR max_lr sweep (maxlr_15e4).
+# Base config: exp13. Sweep variable: training.onecycle_max_lr only.
+
+experiment:
+  id: "exp14"
+  name: "efficientnet_b0_onecycle_sweep_maxlr_15e4"
+  description: "EfficientNet-B0 with augmentation, weighted CrossEntropy, and OneCycleLR max_lr 1.5e-3"
+
+model:
+  name: "efficientnet_b0"
+  source: "torchvision.models"
+  pretrained: true
+  pretrained_weights: "IMAGENET1K_V1"
+
+data:
+  dataset: "kaggle_paddy_2022"
+  split_csv: "data/splits/kaggle.csv"
+  augmentation: true
+  weighted_loss: true
+
+training:
+  epochs: 40
+  batch_size: 64
+  warmup_epochs: 5
+  lr_head: 3.0e-4
+  onecycle_max_lr: 1.5e-3
+  onecycle_pct_start: 0.1
+  onecycle_div_factor: 25.0
+  onecycle_final_div_factor: 10000.0
+  weight_decay: 1.0e-2
+  seed: 42
+
+hardware:
+  num_workers: 4
+
+logging:
+  wandb_project: "krishidoc"
+  wandb_run_name: "exp14_efficientnet_b0_onecycle_sweep_maxlr_15e4"
+  wandb_mode: "disabled"
+
+output:
+  checkpoint_path: "checkpoints/exp14_maxlr_15e4_best.pt"
+  results_dir: "experiments/exp14_efficientnet_b0_onecycle_sweep/results/maxlr_15e4/"

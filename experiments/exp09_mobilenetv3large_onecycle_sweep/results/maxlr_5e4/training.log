@@ -1,0 +1,91 @@
+Epoch 001 | loss 1.5618 | val macro-F1 0.5438 | val acc 0.5906 | lr 3.00e-04 | 79.0s
+  saved best checkpoint (val macro-F1: 0.5438)
+Epoch 002 | loss 0.8455 | val macro-F1 0.7128 | val acc 0.7386 | lr 3.00e-04 | 79.0s
+  saved best checkpoint (val macro-F1: 0.7128)
+Epoch 003 | loss 0.5667 | val macro-F1 0.8371 | val acc 0.8482 | lr 3.00e-04 | 79.3s
+  saved best checkpoint (val macro-F1: 0.8371)
+Epoch 004 | loss 0.4409 | val macro-F1 0.8567 | val acc 0.8552 | lr 3.00e-04 | 79.0s
+  saved best checkpoint (val macro-F1: 0.8567)
+Epoch 005 | loss 0.3732 | val macro-F1 0.8821 | val acc 0.8892 | lr 3.00e-04 | 78.9s
+  saved best checkpoint (val macro-F1: 0.8821)
+--- Phase B: unfreeze all, OneCycleLR max_lr=0.0005 ---
+Epoch 006 | loss 0.2675 | val macro-F1 0.9202 | val acc 0.9218 | lr 1.11e-04 | 78.5s
+  saved best checkpoint (val macro-F1: 0.9202)
+Epoch 007 | loss 0.2562 | val macro-F1 0.8767 | val acc 0.8879 | lr 3.14e-04 | 79.5s
+Epoch 008 | loss 0.3489 | val macro-F1 0.8422 | val acc 0.8559 | lr 4.77e-04 | 81.4s
+Epoch 009 | loss 0.2784 | val macro-F1 0.8821 | val acc 0.8943 | lr 5.00e-04 | 92.5s
+Epoch 010 | loss 0.2236 | val macro-F1 0.8779 | val acc 0.8975 | lr 4.97e-04 | 88.4s
+Epoch 011 | loss 0.1798 | val macro-F1 0.9349 | val acc 0.9372 | lr 4.92e-04 | 87.7s
+  saved best checkpoint (val macro-F1: 0.9349)
+Epoch 012 | loss 0.1270 | val macro-F1 0.9240 | val acc 0.9359 | lr 4.85e-04 | 81.6s
+Epoch 013 | loss 0.1380 | val macro-F1 0.9396 | val acc 0.9417 | lr 4.75e-04 | 86.1s
+  saved best checkpoint (val macro-F1: 0.9396)
+Epoch 014 | loss 0.1038 | val macro-F1 0.9337 | val acc 0.9430 | lr 4.63e-04 | 82.2s
+Epoch 015 | loss 0.0847 | val macro-F1 0.9496 | val acc 0.9507 | lr 4.49e-04 | 82.6s
+  saved best checkpoint (val macro-F1: 0.9496)
+Epoch 016 | loss 0.0848 | val macro-F1 0.9537 | val acc 0.9571 | lr 4.33e-04 | 77.9s
+  saved best checkpoint (val macro-F1: 0.9537)
+Epoch 017 | loss 0.0705 | val macro-F1 0.9496 | val acc 0.9532 | lr 4.15e-04 | 78.4s
+Epoch 018 | loss 0.0696 | val macro-F1 0.9523 | val acc 0.9558 | lr 3.96e-04 | 89.0s
+Epoch 019 | loss 0.0570 | val macro-F1 0.9593 | val acc 0.9616 | lr 3.75e-04 | 83.9s
+  saved best checkpoint (val macro-F1: 0.9593)
+Epoch 020 | loss 0.0551 | val macro-F1 0.9579 | val acc 0.9590 | lr 3.53e-04 | 79.0s
+Epoch 021 | loss 0.0517 | val macro-F1 0.9557 | val acc 0.9584 | lr 3.29e-04 | 81.9s
+Epoch 022 | loss 0.0388 | val macro-F1 0.9603 | val acc 0.9622 | lr 3.05e-04 | 81.3s
+  saved best checkpoint (val macro-F1: 0.9603)
+Epoch 023 | loss 0.0319 | val macro-F1 0.9629 | val acc 0.9641 | lr 2.81e-04 | 80.8s
+  saved best checkpoint (val macro-F1: 0.9629)
+Epoch 024 | loss 0.0262 | val macro-F1 0.9611 | val acc 0.9616 | lr 2.56e-04 | 85.5s
+Epoch 025 | loss 0.0310 | val macro-F1 0.9634 | val acc 0.9648 | lr 2.31e-04 | 85.4s
+  saved best checkpoint (val macro-F1: 0.9634)
+Epoch 026 | loss 0.0227 | val macro-F1 0.9632 | val acc 0.9660 | lr 2.06e-04 | 85.3s
+Epoch 027 | loss 0.0195 | val macro-F1 0.9681 | val acc 0.9680 | lr 1.82e-04 | 86.3s
+  saved best checkpoint (val macro-F1: 0.9681)
+Epoch 028 | loss 0.0198 | val macro-F1 0.9662 | val acc 0.9673 | lr 1.58e-04 | 84.1s
+Epoch 029 | loss 0.0162 | val macro-F1 0.9682 | val acc 0.9686 | lr 1.36e-04 | 80.9s
+  saved best checkpoint (val macro-F1: 0.9682)
+Epoch 030 | loss 0.0107 | val macro-F1 0.9683 | val acc 0.9705 | lr 1.14e-04 | 80.4s
+  saved best checkpoint (val macro-F1: 0.9683)
+Epoch 031 | loss 0.0114 | val macro-F1 0.9663 | val acc 0.9673 | lr 9.40e-05 | 79.4s
+Epoch 032 | loss 0.0093 | val macro-F1 0.9655 | val acc 0.9667 | lr 7.53e-05 | 80.1s
+Epoch 033 | loss 0.0088 | val macro-F1 0.9659 | val acc 0.9673 | lr 5.84e-05 | 79.9s
+Epoch 034 | loss 0.0094 | val macro-F1 0.9666 | val acc 0.9680 | lr 4.33e-05 | 79.7s
+Epoch 035 | loss 0.0078 | val macro-F1 0.9675 | val acc 0.9693 | lr 3.03e-05 | 79.0s
+Epoch 036 | loss 0.0069 | val macro-F1 0.9679 | val acc 0.9693 | lr 1.95e-05 | 79.2s
+Epoch 037 | loss 0.0063 | val macro-F1 0.9680 | val acc 0.9693 | lr 1.10e-05 | 79.6s
+Epoch 038 | loss 0.0067 | val macro-F1 0.9674 | val acc 0.9686 | lr 4.92e-06 | 82.3s
+Epoch 039 | loss 0.0070 | val macro-F1 0.9674 | val acc 0.9686 | lr 1.22e-06 | 80.4s
+Epoch 040 | loss 0.0066 | val macro-F1 0.9674 | val acc 0.9686 | lr 2.10e-09 | 79.8s
+
+Training complete. Best val macro-F1: 0.9683 @ epoch 30. Total: 54.6 min, peak VRAM 1586.2 MB
+
+Loading best checkpoint for final val evaluation...
+
+Measuring model cost and inference latency...
+  params: 4.215 M  |  MACs: 0.234 G  |  ckpt: 17.07 MB
+  CPU latency (mean/p95): 15.67 / 17.52 ms
+  GPU latency (mean/p95): 10.97 / 12.49 ms
+                          precision    recall  f1-score   support
+
+   bacterial_leaf_blight     0.9437    0.9306    0.9371        72
+   bacterial_leaf_streak     1.0000    0.9825    0.9912        57
+bacterial_panicle_blight     0.9804    0.9804    0.9804        51
+                   blast     0.9663    0.9885    0.9773       261
+              brown_spot     0.9718    0.9517    0.9617       145
+              dead_heart     0.9953    0.9907    0.9930       216
+            downy_mildew     0.9457    0.9355    0.9405        93
+                   hispa     0.9661    0.9540    0.9600       239
+                  normal     0.9736    0.9773    0.9754       264
+                  tungro     0.9578    0.9755    0.9666       163
+
+                accuracy                         0.9705      1561
+               macro avg     0.9701    0.9667    0.9683      1561
+            weighted avg     0.9706    0.9705    0.9705      1561
+
+
+Best val macro-F1: 0.9683 @ epoch 30
+Results saved to: E:\GitHub\Personal\krishidoc_ml\experiments\exp09_mobilenetv3large_onecycle_sweep\results\maxlr_5e4
+Full log:         E:\GitHub\Personal\krishidoc_ml\experiments\exp09_mobilenetv3large_onecycle_sweep\results\maxlr_5e4\training.log
+
+Note: test set was NOT evaluated. Per protocol, test is locked until
+the final winning experiment.

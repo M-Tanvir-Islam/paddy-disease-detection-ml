@@ -1,0 +1,44 @@
+# exp09 - MobileNetV3-Large OneCycleLR max_lr sweep (maxlr_3e4).
+# Base config: exp08. Sweep variable: onecycle_max_lr only.
+
+experiment:
+  id: "exp09"
+  name: "mobilenetv3large_onecycle_sweep_maxlr_3e4"
+  description: "MobileNetV3-Large, augmentation + weighted CrossEntropy, OneCycleLR max_lr sweep variant: 3e-4"
+
+model:
+  name: "mobilenet_v3_large"
+  source: "torchvision.models"
+  pretrained: true
+  pretrained_weights: "IMAGENET1K_V1"
+
+data:
+  dataset: "kaggle_paddy_2022"
+  split_csv: "data/splits/kaggle.csv"
+  augmentation: true
+  weighted_loss: true
+
+training:
+  epochs: 40
+  batch_size: 64
+  warmup_epochs: 5
+  lr_head: 3.0e-4
+  onecycle_max_lr: 3.0e-4
+  onecycle_pct_start: 0.1
+  onecycle_div_factor: 25.0
+  onecycle_final_div_factor: 10000.0
+  weight_decay: 1.0e-2
+  seed: 42
+
+hardware:
+  num_workers: 4
+
+logging:
+  wandb_project: "krishidoc"
+  wandb_run_name: "exp09_mobilenetv3large_onecycle_sweep_maxlr_3e4"
+  # Change to "online" after wandb login. Use "disabled" to skip W&B entirely.
+  wandb_mode: "disabled"
+
+output:
+  checkpoint_path: "checkpoints/exp09_maxlr_3e4_best.pt"
+  results_dir: "experiments/exp09_mobilenetv3large_onecycle_sweep/results/maxlr_3e4/"

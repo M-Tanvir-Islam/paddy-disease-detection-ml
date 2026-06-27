@@ -1,0 +1,40 @@
+{
+  "selected_candidate": "exp09_mobilenetv3large_onecycle_sweep/maxlr_15e4",
+  "test_set_status": "locked_not_evaluated",
+  "candidates": [
+    {
+      "id": "exp09",
+      "model": "MobileNetV3-Large",
+      "variant": "maxlr_15e4",
+      "branch": "exp09_mobilenetv3large_onecycle_sweep",
+      "recipe": "augmentation + weighted CrossEntropy + OneCycleLR max_lr 1.5e-3",
+      "input_size": 224,
+      "val_macro_f1": 0.9779065781812761,
+      "val_accuracy": 0.9762972453555413,
+      "cpu_mean_ms": 15.02,
+      "cpu_p95_ms": 17.55,
+      "params_m": 4.215,
+      "macs_g": 0.234,
+      "checkpoint_mb": 17.07,
+      "peak_vram_mb": 1586.2,
+      "best_epoch": 31
+    },
+    {
+      "id": "exp14",
+      "model": "EfficientNet-B0",
+      "variant": "maxlr_5e4",
+      "branch": "exp14_efficientnet_b0_onecycle_sweep",
+      "recipe": "augmentation + weighted CrossEntropy + OneCycleLR max_lr 5e-4",
+      "input_size": 224,
+      "val_macro_f1": 0.9713286413390492,
+      "val_accuracy": 0.974375400384369,
+      "cpu_mean_ms": 24.01,
+      "cpu_p95_ms": 30.39,
+      "params_m": 4.02,
+      "macs_g": 0.414,
+      "checkpoint_mb": 16.38,
+      "peak_vram_mb": 2977.0,
+      "best_epoch": 38
+    }
+  ]
+}
