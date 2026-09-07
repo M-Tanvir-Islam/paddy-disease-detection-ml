@@ -43,6 +43,7 @@ exp03 as the highest validation macro-F1 model.
 | exp12 | EfficientNet-B0 | Yes | Yes | head 3e-4 / full 5e-5 | 224 | - | - | - | planned vs exp11 |
 | exp13 | EfficientNet-B0 OneCycleLR | Yes | Yes | OneCycleLR TBD | 224 | - | - | - | planned vs exp12 |
 | exp14 | EfficientNet-B0 OneCycle max_lr sweep | Yes | Yes | max_lr sweep | 224 | - | - | - | planned vs exp13 |
+| exp15 | EfficientNet-B0 OneCycle control | No | No | OneCycle max_lr 5e-4 | 224 | 0.9666 | 0.9667 | 25.74 | +0.0057 vs exp03; below exp14 and exp09 |
 
 ## Phase 3 - Final
 
