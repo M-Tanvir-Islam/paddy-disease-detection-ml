@@ -65,6 +65,7 @@ EfficientNet branch.
 | exp12 | exp11 + weighted CrossEntropy | Test whether weighted loss improves fragile/minority classes on top of augmentation | `exp12_efficientnet_b0_weighted` | complete: 0.9329 macro-F1; under exp11 and exp03 |
 | exp13 | exp12 + OneCycleLR | Test whether OneCycleLR improves EfficientNet-B0 fine-tuning | `exp13_efficientnet_b0_onecycle` | complete: 0.9701 macro-F1; best EfficientNet so far |
 | exp14 | exp13 + OneCycle max_lr sweep | Tune OneCycleLR max_lr for the best EfficientNet-B0 setup | `exp14_efficientnet_b0_onecycle_sweep` | complete: best 0.9713 macro-F1 at max_lr 5e-4 |
+| exp15 | exp03 + OneCycleLR control | Test OneCycleLR without the augmentation and weighted-loss interaction | `exp15_efficientnet_b0_onecycle_control` | complete: 0.9666 macro-F1; improves exp03 but trails exp14 and exp09 |
 
 EfficientNet augmentation result: exp11 added the MobileNet train-only augmentation recipe to exp03 and dropped to 0.9469 macro-F1, -0.0140 versus the 0.9609 exp03 baseline. Continue to exp12 only to test whether weighted loss recovers weak-class behavior on top of augmentation; if exp12 also underperforms, consider lighter EfficientNet-specific augmentation or stopping the track.
 
@@ -82,7 +83,14 @@ EfficientNet control rules:
 - Update `results/experiment_log.md` only after meaningful completed runs.
 - Use `results/tmp_logs/expNN_tmp_log.md` for scratch notes, partial runs, failed runs, and command notes.
 
-EfficientNet conclusion: use exp14 `maxlr_5e4` as the EfficientNet representative for cross-track comparison. Do not continue EfficientNet tuning unless a new hypothesis is explicitly approved, because MobileNet exp09 is currently better on macro-F1 and CPU latency.
+EfficientNet control result: exp15 applied OneCycleLR directly to the clean exp03
+baseline, with augmentation and weighted loss disabled. It improved exp03 by
+0.0057 macro-F1, reaching 0.9666, but remained 0.0047 below exp14 and 0.0113
+below MobileNet exp09. This confirms that OneCycleLR helps independently while
+also showing that the complete exp14 recipe is still the stronger EfficientNet
+configuration.
+
+EfficientNet conclusion: use exp14 `maxlr_5e4` as the EfficientNet representative for cross-track comparison. Exp15 closes the missing scheduler-control question and does not justify another EfficientNet LR sweep. Do not continue EfficientNet tuning unless a new hypothesis is explicitly approved, because MobileNet exp09 is currently better on macro-F1 and CPU latency.
 
 ---
 

@@ -1,6 +1,26 @@
 {
   "selected_candidate": "exp09_mobilenetv3large_onecycle_sweep/maxlr_15e4",
   "test_set_status": "locked_not_evaluated",
+  "control_experiments": [
+    {
+      "id": "exp15",
+      "model": "EfficientNet-B0",
+      "variant": "onecycle_control",
+      "branch": "exp15_efficientnet_b0_onecycle_control",
+      "recipe": "no augmentation + unweighted CrossEntropy + OneCycleLR max_lr 5e-4",
+      "input_size": 224,
+      "val_macro_f1": 0.9666397878452054,
+      "val_accuracy": 0.9666880204996797,
+      "cpu_mean_ms": 25.74,
+      "cpu_p95_ms": 33.5,
+      "params_m": 4.02,
+      "macs_g": 0.414,
+      "checkpoint_mb": 16.38,
+      "peak_vram_mb": 2977.0,
+      "best_epoch": 20,
+      "conclusion": "Improved exp03 by 0.0057 macro-F1 but did not beat exp14 or MobileNet exp09"
+    }
+  ],
   "candidates": [
     {
       "id": "exp09",

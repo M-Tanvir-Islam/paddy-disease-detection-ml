@@ -23,6 +23,23 @@ Reasons:
 
 EfficientNet-B0 exp14 remains useful as the best EfficientNet reference, but it does not justify replacing MobileNetV3-Large.
 
+## EfficientNet Scheduler Control
+
+Exp15 closed the remaining interaction question by applying OneCycleLR directly
+to the clean exp03 baseline, with augmentation and weighted loss disabled.
+
+| Experiment | Aug | Weighted loss | Scheduler | Val macro-F1 | Val Acc | CPU mean ms | Best epoch |
+| --- | --- | --- | --- | ---: | ---: | ---: | ---: |
+| exp03 | No | No | fixed full LR | 0.9609 | 0.9641 | 25.79 | 30 |
+| exp15 | No | No | OneCycleLR `5e-4` | 0.9666 | 0.9667 | 25.74 | 20 |
+| exp14 | Yes | Yes | OneCycleLR `5e-4` | 0.9713 | 0.9744 | 24.01 | 38 |
+
+Exp15 improved exp03 by 0.0057 macro-F1, demonstrating that OneCycleLR helps
+EfficientNet independently of augmentation and weighted loss. It still trailed
+exp14 by 0.0047 and MobileNet exp09 by 0.0113. The predefined condition for an
+exp15 max-LR sweep was therefore not met. The cross-track decision remains
+unchanged.
+
 ## Per-Class F1 Comparison
 
 | Class | MobileNet exp09 | EfficientNet exp14 | Winner | Delta MobileNet - EfficientNet |
@@ -47,12 +64,16 @@ This `compare_models` branch now contains:
 - Phase 1 bake-off evidence for exp01-exp04.
 - MobileNet selected-track evidence from exp09 and rejected resolution check from exp10.
 - EfficientNet selected-track evidence from exp14.
+- EfficientNet scheduler-control evidence from exp15.
 - Updated `results/experiment_log.md` with completed exp14 numbers.
 - Handoff docs for MobileNet and EfficientNet decisions.
 
 ## Next Step
 
-Prepare Phase 3 for MobileNetV3-Large exp09. Do not run the test set until the user explicitly confirms final evaluation.
+The architecture and scheduler comparison is now closed in favor of
+MobileNetV3-Large exp09. Before Phase 3, agree on the robustness protocol for
+seed stability, split-leakage auditing, and deployment-like field validation.
+Do not run the test set until the final candidate and protocol are frozen.
 
 Recommended Phase 3 order:
 

@@ -32,6 +32,8 @@ experiments/*
 !experiments/exp10_mobilenetv3large_resolution_sweep/results/input_256/training_curves.png
 !experiments/exp14_efficientnet_b0_onecycle_sweep/
 !experiments/exp14_efficientnet_b0_onecycle_sweep/**
+!experiments/exp15_efficientnet_b0_onecycle_control/
+!experiments/exp15_efficientnet_b0_onecycle_control/**
 
 # Local W&B run cache (per-machine, never committed)
 wandb/
