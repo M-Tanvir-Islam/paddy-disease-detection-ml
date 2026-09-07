@@ -26,6 +26,10 @@ experiments/*
 # Local W&B run cache (per-machine, never committed)
 wandb/
 
+# Dataset audit contact sheets contain source-image thumbnails. They are
+# reproducible local review artifacts, not repository artifacts.
+results/data_integrity/**/contact_sheets/
+
 # Notebook scratch
 .ipynb_checkpoints/
 

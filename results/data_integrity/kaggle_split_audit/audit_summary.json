@@ -1,0 +1,113 @@
+{
+  "generated_at_utc": "2026-09-07T14:28:04.487806+00:00",
+  "scope": "data_integrity_only_no_model_evaluation",
+  "split_csv": "data/splits/kaggle.csv",
+  "metadata_csv": "datasets/paddy-disease-classification/train.csv",
+  "parameters": {
+    "phash_threshold": 8,
+    "dhash_threshold": 8,
+    "workers": 8,
+    "contact_sheet_pairs": 100,
+    "limit": null
+  },
+  "images_audited": 10407,
+  "split_counts": {
+    "train": 7284,
+    "val": 1561,
+    "test": 1562
+  },
+  "class_count": 10,
+  "read_errors": [],
+  "confirmed_exact_file_pairs": 34,
+  "confirmed_exact_pixel_pairs": 34,
+  "exact_file_group_stats": {
+    "cross_split_groups": 33,
+    "unique_images_in_groups": 67,
+    "group_sizes": {
+      "2": 32,
+      "3": 1
+    },
+    "unique_images_by_split": {
+      "test": 18,
+      "train": 30,
+      "val": 19
+    },
+    "val_images_with_train_duplicate": 15,
+    "test_images_with_train_duplicate": 14
+  },
+  "exact_duplicate_label_conflicts": 0,
+  "total_candidate_pairs": 5282,
+  "geometrically_supported_near_duplicate_pairs": 889,
+  "geometrically_supported_cross_label_pairs": 29,
+  "conservative_duplicate_group_stats": {
+    "groups": 461,
+    "groups_with_exact_pair": 33,
+    "cross_label_groups": 11,
+    "unique_images_in_groups": 1264,
+    "group_sizes": {
+      "2": 305,
+      "3": 86,
+      "4": 34,
+      "5": 12,
+      "6": 9,
+      "7": 2,
+      "8": 2,
+      "9": 4,
+      "10": 2,
+      "11": 3,
+      "12": 1,
+      "15": 1
+    },
+    "unique_images_by_split": {
+      "test": 315,
+      "train": 650,
+      "val": 299
+    },
+    "val_images_grouped_with_train": 272,
+    "test_images_grouped_with_train": 288,
+    "basis": "Confirmed exact pairs plus high-confidence perceptual pairs with at least 12 ORB homography inliers and inlier ratio >= 0.5."
+  },
+  "candidate_counts_by_confidence": {
+    "confirmed_exact_file": 34,
+    "likely_near_duplicate": 533,
+    "possible_near_duplicate": 4359,
+    "very_likely_near_duplicate": 356
+  },
+  "candidate_counts_by_split_pair": {
+    "train-test": 2412,
+    "train-val": 2327,
+    "val-test": 543
+  },
+  "metadata_audit": {
+    "available": true,
+    "matched_rows": 10407,
+    "missing_metadata_rows": 0,
+    "group_definition": [
+      "class",
+      "variety",
+      "age"
+    ],
+    "total_groups": 152,
+    "groups_spanning_multiple_splits": 148,
+    "note": "Variety and age are proxies, not capture-session identifiers. A group spanning splits is a distribution-risk flag, not proof of leakage."
+  },
+  "contact_sheets": {
+    "ranked": [
+      "results/data_integrity/kaggle_split_audit/contact_sheets/candidates_01.jpg",
+      "results/data_integrity/kaggle_split_audit/contact_sheets/candidates_02.jpg",
+      "results/data_integrity/kaggle_split_audit/contact_sheets/candidates_03.jpg",
+      "results/data_integrity/kaggle_split_audit/contact_sheets/candidates_04.jpg",
+      "results/data_integrity/kaggle_split_audit/contact_sheets/candidates_05.jpg",
+      "results/data_integrity/kaggle_split_audit/contact_sheets/candidates_06.jpg",
+      "results/data_integrity/kaggle_split_audit/contact_sheets/candidates_07.jpg",
+      "results/data_integrity/kaggle_split_audit/contact_sheets/candidates_08.jpg",
+      "results/data_integrity/kaggle_split_audit/contact_sheets/candidates_09.jpg",
+      "results/data_integrity/kaggle_split_audit/contact_sheets/candidates_10.jpg"
+    ],
+    "cross_label_high_confidence": [
+      "results/data_integrity/kaggle_split_audit/contact_sheets/cross_label_high_confidence_01.jpg",
+      "results/data_integrity/kaggle_split_audit/contact_sheets/cross_label_high_confidence_02.jpg",
+      "results/data_integrity/kaggle_split_audit/contact_sheets/cross_label_high_confidence_03.jpg"
+    ]
+  }
+}
