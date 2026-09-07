@@ -14,6 +14,7 @@ thop==0.1.1.post2209072238   # FLOPs / MAC counter for cost reporting
 numpy==2.4.4
 pandas==3.0.3
 Pillow==12.2.0
+opencv-python-headless==4.13.0.92  # geometric verification for leakage audit
 albumentations==2.0.8
 scikit-learn==1.8.0
 
