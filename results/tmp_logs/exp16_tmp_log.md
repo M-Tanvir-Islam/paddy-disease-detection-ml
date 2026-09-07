@@ -10,4 +10,18 @@
 
 ## Runs
 
-No training run yet.
+### Completed run
+
+- Validation macro-F1: 0.9800158992
+- Validation accuracy: 0.9813384813
+- Best epoch: 38 of 40
+- Training time: 2,931.4 seconds
+- Peak VRAM: 1,586.2 MB
+- CPU latency mean / p95: 21.15 / 36.59 ms
+- GPU latency mean / p95: 11.19 / 12.26 ms
+- Checkpoint size: 17.07 MB
+- Test set: not evaluated
+
+Observation: validation performance dropped after the backbone was unfrozen
+and the OneCycle learning rate rose, then recovered steadily. The final six
+epochs stayed between 0.9789 and 0.9800 macro-F1.

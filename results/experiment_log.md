@@ -34,6 +34,17 @@ exp03 as the highest validation macro-F1 model.
 | exp08 | MobileNetV3-Large OneCycleLR | Yes | Yes | OneCycle max_lr 1e-3 | 224 | 0.9746 | 0.9750 | 15.83 | +0.0076 vs exp06 |
 | exp09 | MobileNetV3-Large OneCycle max_lr sweep | Yes | Yes | best OneCycle max_lr 1.5e-3 | 224 | 0.9779 | 0.9763 | 15.02 | +0.0033 vs exp08 |
 
+#### Leakage-resistant re-baseline
+
+| ID | Model | Aug | WL | LR config | Input | Val F1 | Val Acc | CPU ms | Delta vs prev |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| exp16 | MobileNetV3-Large grouped-split retrain | Yes | Yes | OneCycle max_lr 1.5e-3 | 224 | **0.9800** | 0.9813 | 21.15 | protocol reset; not directly comparable |
+
+exp16 repeats the exp09 winning recipe from fresh ImageNet weights on
+`kaggle_grouped_v2`. Accepted duplicate components cannot cross partitions;
+58 images in 11 cross-label components are quarantined. The test set remains
+locked.
+
 ### Track B - EfficientNet-B0
 
 | ID | Model | Aug | WL | LR config | Input | Val F1 | Val Acc | CPU ms | Delta vs prev |

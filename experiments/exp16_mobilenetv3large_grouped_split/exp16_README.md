@@ -48,11 +48,33 @@ does not evaluate the locked test partition.
 
 ## Result
 
-Pending training. Record validation macro-F1, per-class metrics, best epoch,
-latency, and checkpoint size here after the run.
+Completed successfully.
+
+| Metric | Result |
+| --- | ---: |
+| Validation macro-F1 | **0.9800** |
+| Validation accuracy | 0.9813 |
+| Best epoch | 38 / 40 |
+| Validation errors | 29 / 1,554 |
+| CPU latency, mean / p95 | 21.15 / 36.59 ms |
+| GPU latency, mean / p95 | 11.19 / 12.26 ms |
+| Checkpoint size | 17.07 MB |
+| Peak VRAM | 1,586.2 MB |
+| Training time | 48.9 minutes |
+
+The strongest class was `bacterial_leaf_streak` (F1 1.0000). The weakest was
+`downy_mildew` (F1 0.9545, recall 0.9231; 7 of 91 images missed). Its errors
+were mainly predictions of `blast` and `tungro`. The run was volatile shortly
+after unfreezing at the peak learning rate, but recovered and formed a stable
+0.9789-0.9800 plateau over the final six epochs.
+
+This result shows that the exp09 recipe remains strong under the corrected
+group-aware protocol. It does not prove a +0.0021 improvement over exp09,
+because exp09 and exp16 use different validation partitions.
 
 ## Next Step
 
-After exp16 finishes, inspect validation errors and stability. Do not run the
-test set until the MobileNet candidate and evaluation protocol are accepted as
-the Phase 3 final candidate.
+Review the 29 validation errors, especially the seven `downy_mildew` misses,
+and manually resolve or permanently exclude the 11 quarantined cross-label
+groups. If that review finds no systematic data problem, accept exp16 as the
+MobileNet Phase 3 candidate and perform the single locked-test evaluation.
