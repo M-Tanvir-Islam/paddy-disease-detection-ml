@@ -1,0 +1,18 @@
+{
+  "supported_images": 606,
+  "out_of_scope_images": 500,
+  "supported_class_counts": {
+    "blast": 272,
+    "brown_spot": 139,
+    "tungro": 195
+  },
+  "supported_background_counts": {
+    "field_background": 199,
+    "white_background": 407
+  },
+  "out_of_scope_class_counts": {
+    "leaf_scald": 217,
+    "sheath_blight": 283
+  },
+  "audit_manifest_rows": 10955
+}

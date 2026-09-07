@@ -43,7 +43,10 @@ exp03 as the highest validation macro-F1 model.
 exp16 repeats the exp09 winning recipe from fresh ImageNet weights on
 `kaggle_grouped_v2`. Accepted duplicate components cannot cross partitions;
 58 images in 11 cross-label components are quarantined. The test set remains
-locked.
+locked. A later deployment-style check on 606 compatible Dhan-Shomadhan images
+showed a substantial domain gap (0.2162 accuracy and 0.2777 supported-class
+macro-F1 overall; 0.3317 accuracy on the 199 field-background images), so this
+checkpoint is not yet demonstrated to generalize to Dhan-style captures.
 
 ### Track B - EfficientNet-B0
 

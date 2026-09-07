@@ -1,0 +1,176 @@
+{
+  "scope": "external_deployment_evaluation_no_training",
+  "checkpoint": "checkpoints/exp16_grouped_split_best.pt",
+  "manifest": "data/splits/dhan_supported_eval.csv",
+  "supported_classes": [
+    "blast",
+    "brown_spot",
+    "tungro"
+  ],
+  "excluded_dhan_classes": [
+    "leaf_scald",
+    "sheath_blight"
+  ],
+  "overall": {
+    "images": 606,
+    "full_10_class_accuracy": 0.21617161716171618,
+    "supported_class_macro_f1": 0.27772099433348874,
+    "top_2_accuracy": 0.40924092409240925,
+    "out_of_scope_prediction_rate": 0.5643564356435643,
+    "out_of_scope_prediction_counts": {
+      "bacterial_leaf_blight": 4,
+      "bacterial_leaf_streak": 13,
+      "bacterial_panicle_blight": 7,
+      "dead_heart": 13,
+      "downy_mildew": 14,
+      "hispa": 287,
+      "normal": 4
+    },
+    "per_class": {
+      "blast": {
+        "precision": 0.37037037037037035,
+        "recall": 0.11029411764705882,
+        "f1": 0.16997167138810199,
+        "support": 272
+      },
+      "brown_spot": {
+        "precision": 0.3611111111111111,
+        "recall": 0.09352517985611511,
+        "f1": 0.14857142857142858,
+        "support": 139
+      },
+      "tungro": {
+        "precision": 0.5986394557823129,
+        "recall": 0.4512820512820513,
+        "f1": 0.5146198830409356,
+        "support": 195
+      }
+    },
+    "restricted_3_class_accuracy": 0.3844884488448845,
+    "restricted_3_class_macro_f1": 0.3323717377690391,
+    "restricted_3_class_per_class": {
+      "blast": {
+        "precision": 0.5149253731343284,
+        "recall": 0.2536764705882353,
+        "f1": 0.3399014778325123
+      },
+      "brown_spot": {
+        "precision": 0.3695652173913043,
+        "recall": 0.1223021582733813,
+        "f1": 0.1837837837837838
+      },
+      "tungro": {
+        "precision": 0.34507042253521125,
+        "recall": 0.7538461538461538,
+        "f1": 0.47342995169082125
+      }
+    }
+  },
+  "by_background": {
+    "field_background": {
+      "images": 199,
+      "full_10_class_accuracy": 0.3316582914572864,
+      "supported_class_macro_f1": 0.370386981772181,
+      "top_2_accuracy": 0.5527638190954773,
+      "out_of_scope_prediction_rate": 0.24120603015075376,
+      "out_of_scope_prediction_counts": {
+        "bacterial_leaf_blight": 4,
+        "bacterial_leaf_streak": 4,
+        "bacterial_panicle_blight": 7,
+        "dead_heart": 13,
+        "downy_mildew": 14,
+        "hispa": 2,
+        "normal": 4
+      },
+      "per_class": {
+        "blast": {
+          "precision": 0.37037037037037035,
+          "recall": 0.40540540540540543,
+          "f1": 0.3870967741935484,
+          "support": 74
+        },
+        "brown_spot": {
+          "precision": 0.3611111111111111,
+          "recall": 0.2653061224489796,
+          "f1": 0.3058823529411765,
+          "support": 49
+        },
+        "tungro": {
+          "precision": 0.6764705882352942,
+          "recall": 0.3026315789473684,
+          "f1": 0.41818181818181815,
+          "support": 76
+        }
+      },
+      "restricted_3_class_accuracy": 0.4321608040201005,
+      "restricted_3_class_macro_f1": 0.4237776463630987,
+      "restricted_3_class_per_class": {
+        "blast": {
+          "precision": 0.38461538461538464,
+          "recall": 0.5405405405405406,
+          "f1": 0.449438202247191
+        },
+        "brown_spot": {
+          "precision": 0.3695652173913043,
+          "recall": 0.3469387755102041,
+          "f1": 0.35789473684210527
+        },
+        "tungro": {
+          "precision": 0.5918367346938775,
+          "recall": 0.3815789473684211,
+          "f1": 0.464
+        }
+      }
+    },
+    "white_background": {
+      "images": 407,
+      "full_10_class_accuracy": 0.1597051597051597,
+      "supported_class_macro_f1": 0.1867816091954023,
+      "top_2_accuracy": 0.33906633906633904,
+      "out_of_scope_prediction_rate": 0.7223587223587223,
+      "out_of_scope_prediction_counts": {
+        "bacterial_leaf_streak": 9,
+        "hispa": 285
+      },
+      "per_class": {
+        "blast": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 198
+        },
+        "brown_spot": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 90
+        },
+        "tungro": {
+          "precision": 0.5752212389380531,
+          "recall": 0.5462184873949579,
+          "f1": 0.5603448275862069,
+          "support": 119
+        }
+      },
+      "restricted_3_class_accuracy": 0.36117936117936117,
+      "restricted_3_class_macro_f1": 0.24339747217506133,
+      "restricted_3_class_per_class": {
+        "blast": {
+          "precision": 0.9666666666666667,
+          "recall": 0.14646464646464646,
+          "f1": 0.2543859649122807
+        },
+        "brown_spot": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "tungro": {
+          "precision": 0.3129973474801061,
+          "recall": 0.9915966386554622,
+          "f1": 0.47580645161290325
+        }
+      }
+    }
+  }
+}

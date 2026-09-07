@@ -69,6 +69,12 @@ def main() -> None:
                         help="Path to experiment folder (e.g. experiments/exp01_...)")
     parser.add_argument("--split", default="val", choices=["val", "test"],
                         help="Dataset split to evaluate on. Use 'test' only for the final winner.")
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=None,
+        help="Optional output directory; useful for a non-destructive validation dry run.",
+    )
     args = parser.parse_args()
 
     exp_dir = Path(args.experiment_dir).resolve()
@@ -130,7 +136,11 @@ def main() -> None:
         print(f"  GPU latency (mean/p95): {lat_gpu['mean_ms']} / {lat_gpu['p95_ms']} ms")
 
     # --- Save ---
-    results_dir = ROOT / config["output"]["results_dir"]
+    results_dir = (
+        args.output_dir.resolve()
+        if args.output_dir is not None
+        else ROOT / config["output"]["results_dir"]
+    )
     results_dir.mkdir(parents=True, exist_ok=True)
     json_path = results_dir / f"metrics_{args.split}.json"
     cm_path = results_dir / f"confusion_matrix_{args.split}.png"

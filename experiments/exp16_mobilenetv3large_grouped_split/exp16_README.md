@@ -72,9 +72,34 @@ This result shows that the exp09 recipe remains strong under the corrected
 group-aware protocol. It does not prove a +0.0021 improvement over exp09,
 because exp09 and exp16 use different validation partitions.
 
+## Deployment-Like Dhan Evaluation
+
+The saved checkpoint was evaluated without training on the 606 Dhan-Shomadhan
+images that map unambiguously to the locked taxonomy: `blast`, `brown_spot`,
+and `tungro`. The other 500 Dhan images (`leaf_scald` and `sheath_blight`) were
+excluded because those classes do not exist in the model.
+
+The cross-dataset audit found zero exact or accepted near-duplicate matches
+between Dhan and the 10,349 usable Kaggle images. EXIF orientation was applied
+before inference for the phone-camera images.
+
+| Dhan slice | Images | Full-model accuracy | Supported-class macro-F1 | Other-class predictions |
+| --- | ---: | ---: | ---: | ---: |
+| Overall | 606 | 0.2162 | 0.2777 | 0.5644 |
+| Field background | 199 | 0.3317 | 0.3704 | 0.2412 |
+| White background | 407 | 0.1597 | 0.1868 | 0.7224 |
+
+This is a major domain gap. White-background images are outside the documented
+product capture style and are dominated by `hispa` predictions, but even the
+more relevant field subset is far below production quality. The Dhan data has
+now been consumed as development evidence and must not be presented as an
+untouched final external test set.
+
 ## Next Step
 
-Review the 29 validation errors, especially the seven `downy_mildew` misses,
-and manually resolve or permanently exclude the 11 quarantined cross-label
-groups. If that review finds no systematic data problem, accept exp16 as the
-MobileNet Phase 3 candidate and perform the single locked-test evaluation.
+Do not unlock the grouped Kaggle test yet. First decide whether production must
+support Dhan-style field/phone imagery. If yes, create a deliberate adaptation
+experiment using a group-aware Dhan train/validation design mixed with Kaggle
+training data while preserving the 10-class taxonomy and Kaggle validation.
+If product capture gates intentionally exclude this image style, document that
+scope and proceed with the single grouped Kaggle test evaluation.
