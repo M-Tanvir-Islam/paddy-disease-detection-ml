@@ -1,0 +1,31 @@
+{
+  "gate_version": "capture_gate_proxy_v1",
+  "warning": "Proxy implementation; synchronize with exact product browser code before deployment.",
+  "canvas_size": 224,
+  "blur_threshold": 80.0,
+  "green_ratio_threshold": 0.6,
+  "hsv_green_mask_opencv": {
+    "hue": [
+      20,
+      100
+    ],
+    "saturation_min": 40,
+    "value_min": 40
+  },
+  "input_images": 606,
+  "eligible_images": 172,
+  "rejected_images": 434,
+  "eligible_rate": 0.2838283828382838,
+  "eligible_by_background": {
+    "field_background": 172
+  },
+  "eligible_by_class": {
+    "blast": 73,
+    "brown_spot": 48,
+    "tungro": 51
+  },
+  "rejection_reasons": {
+    "blur_and_leaf_coverage": 329,
+    "leaf_coverage": 105
+  }
+}

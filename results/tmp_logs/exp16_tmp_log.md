@@ -39,4 +39,9 @@ epochs stayed between 0.9789 and 0.9800 macro-F1.
 - Dhan overall full-model accuracy: 0.2162.
 - Dhan field-background full-model accuracy: 0.3317.
 - Dhan white-background full-model accuracy: 0.1597.
+- Capture-gate proxy: blur score >= 80 and green coverage >= 60% on a 224x224
+  EXIF-oriented analysis canvas.
+- Capture-gate eligible: 172 / 606, all field-background images.
+- Eligible-subset full-model accuracy: 0.3081.
+- Eligible-subset supported-class macro-F1: 0.3314.
 - Kaggle test set: not evaluated.

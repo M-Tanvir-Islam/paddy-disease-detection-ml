@@ -88,6 +88,7 @@ before inference for the phone-camera images.
 | Overall | 606 | 0.2162 | 0.2777 | 0.5644 |
 | Field background | 199 | 0.3317 | 0.3704 | 0.2412 |
 | White background | 407 | 0.1597 | 0.1868 | 0.7224 |
+| Capture-gate proxy eligible | 172 | 0.3081 | 0.3314 | 0.2267 |
 
 This is a major domain gap. White-background images are outside the documented
 product capture style and are dominated by `hispa` predictions, but even the
@@ -95,11 +96,18 @@ more relevant field subset is far below production quality. The Dhan data has
 now been consumed as development evidence and must not be presented as an
 untouched final external test set.
 
+The documented blur and 60% green-coverage constraints were then applied as a
+versioned proxy. They retained 172 images, all field-background photographs,
+with 73 blast, 48 brown spot, and 51 tungro examples. Performance remained
+poor, so rejecting white-background and low-coverage captures does not explain
+or solve the cross-dataset failure. The proxy must still be synchronized with
+the exact product browser code before deployment claims are made.
+
 ## Next Step
 
-Do not unlock the grouped Kaggle test yet. First decide whether production must
-support Dhan-style field/phone imagery. If yes, create a deliberate adaptation
-experiment using a group-aware Dhan train/validation design mixed with Kaggle
-training data while preserving the 10-class taxonomy and Kaggle validation.
-If product capture gates intentionally exclude this image style, document that
-scope and proceed with the single grouped Kaggle test evaluation.
+Do not unlock the grouped Kaggle test yet if Dhan-style field/phone imagery is
+representative of production. The capture-gate proxy did not recover acceptable
+performance, so the next justified model change is a deliberate domain-
+adaptation experiment using group-separated Dhan field data mixed with Kaggle
+training data. Preserve the 10-class taxonomy and continue reporting Kaggle
+validation separately to detect catastrophic forgetting.

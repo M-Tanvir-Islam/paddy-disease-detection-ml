@@ -12,6 +12,8 @@ Raw image data lives in `datasets/` at the repo root (gitignored).
   one partition; cross-label components are written to a quarantine CSV.
 - `prepare_dhan_eval.py` — maps the three Dhan-Shomadhan classes compatible
   with the locked taxonomy and prepares a cross-dataset overlap-audit manifest.
+- `filter_dhan_capture_gates.py` — scores compatible Dhan images with the
+  versioned blur/green-coverage proxy and writes eligible/rejected manifests.
 - `verify_dataset.py` — sanity-checks the prepared CSV: filepath existence,
   class-name match, per-split counts, imbalance ratio.
 - `../scripts/audit_split_leakage.py` — audit exact and perceptual duplicate

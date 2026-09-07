@@ -46,7 +46,9 @@ exp16 repeats the exp09 winning recipe from fresh ImageNet weights on
 locked. A later deployment-style check on 606 compatible Dhan-Shomadhan images
 showed a substantial domain gap (0.2162 accuracy and 0.2777 supported-class
 macro-F1 overall; 0.3317 accuracy on the 199 field-background images), so this
-checkpoint is not yet demonstrated to generalize to Dhan-style captures.
+checkpoint is not yet demonstrated to generalize to Dhan-style captures. A
+documented blur/green-coverage proxy retained 172 images but accuracy remained
+0.3081, so capture filtering alone did not resolve the gap.
 
 ### Track B - EfficientNet-B0
 
