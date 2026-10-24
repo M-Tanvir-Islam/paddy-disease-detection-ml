@@ -41,7 +41,7 @@ winner tracks should use comparable recipes when practical.
 | exp08 | exp06 + OneCycleLR | Test whether OneCycleLR beats the conservative exp06 scheduler | `exp08_mobilenetv3large_onecycle` | complete: 0.9746 macro-F1, current best MobileNet |
 | exp09 | exp08 + OneCycle max_lr sweep | Tune OneCycleLR max_lr for the best MobileNet setup | `exp09_mobilenetv3large_onecycle_sweep` | complete: best 0.9779 macro-F1 |
 | exp16 | exp09 recipe on `kaggle_grouped_v2` | Leakage-resistant split should keep the recipe strong | `exp16_mobilenetv3large_grouped_split` | complete: 0.9800 macro-F1 (new split; not comparable to exp09) |
-| exp17 | exp16 + label smoothing 0.1 + EMA weights | Standard calibration/robustness tricks hold val macro-F1 while producing a smoother final model | `exp17_mobilenetv3large_smoothing_ema` | in progress |
+| exp17 | exp16 + label smoothing 0.1 + EMA weights | Standard calibration/robustness tricks hold val macro-F1 while producing a smoother final model | `exp17_mobilenetv3large_smoothing_ema` | complete: 0.9812 macro-F1, rejected; under-confident (ECE 0.149 vs 0.013) |
 
 LR sweep result: exp07 compared high/default/low LR recipes on the current best
 MobileNetV3-Large setup. High LR was numerically best at 0.9676 macro-F1, but

@@ -1,0 +1,95 @@
+Epoch 001 | loss 1.8495 | EMA val macro-F1 0.5306 (raw 0.5449) | EMA val acc 0.5560 | lr 3.00e-04 | 125.5s
+  saved best EMA checkpoint (val macro-F1: 0.5306)
+Epoch 002 | loss 1.3330 | EMA val macro-F1 0.7349 (raw 0.7414) | EMA val acc 0.7580 | lr 3.00e-04 | 123.4s
+  saved best EMA checkpoint (val macro-F1: 0.7349)
+Epoch 003 | loss 1.1567 | EMA val macro-F1 0.8167 (raw 0.8157) | EMA val acc 0.8359 | lr 3.00e-04 | 128.0s
+  saved best EMA checkpoint (val macro-F1: 0.8167)
+Epoch 004 | loss 1.0370 | EMA val macro-F1 0.8547 (raw 0.8508) | EMA val acc 0.8694 | lr 3.00e-04 | 129.2s
+  saved best EMA checkpoint (val macro-F1: 0.8547)
+Epoch 005 | loss 0.9776 | EMA val macro-F1 0.8939 (raw 0.8885) | EMA val acc 0.9028 | lr 3.00e-04 | 123.2s
+  saved best EMA checkpoint (val macro-F1: 0.8939)
+--- Phase B: unfreeze all, OneCycleLR max_lr=0.0015 ---
+Epoch 006 | loss 0.9155 | EMA val macro-F1 0.9175 (raw 0.8980) | EMA val acc 0.9247 | lr 3.32e-04 | 130.1s
+  saved best EMA checkpoint (val macro-F1: 0.9175)
+Epoch 007 | loss 1.0048 | EMA val macro-F1 0.9229 (raw 0.7045) | EMA val acc 0.9324 | lr 9.43e-04 | 131.8s
+  saved best EMA checkpoint (val macro-F1: 0.9229)
+Epoch 008 | loss 1.0770 | EMA val macro-F1 0.9081 (raw 0.6167) | EMA val acc 0.9157 | lr 1.43e-03 | 135.0s
+Epoch 009 | loss 1.0001 | EMA val macro-F1 0.9197 (raw 0.7852) | EMA val acc 0.9234 | lr 1.50e-03 | 127.3s
+Epoch 010 | loss 0.8801 | EMA val macro-F1 0.9465 (raw 0.8858) | EMA val acc 0.9498 | lr 1.49e-03 | 127.3s
+  saved best EMA checkpoint (val macro-F1: 0.9465)
+Epoch 011 | loss 0.8127 | EMA val macro-F1 0.9571 (raw 0.9091) | EMA val acc 0.9595 | lr 1.48e-03 | 124.7s
+  saved best EMA checkpoint (val macro-F1: 0.9571)
+Epoch 012 | loss 0.8035 | EMA val macro-F1 0.9618 (raw 0.9207) | EMA val acc 0.9646 | lr 1.45e-03 | 125.2s
+  saved best EMA checkpoint (val macro-F1: 0.9618)
+Epoch 013 | loss 0.7931 | EMA val macro-F1 0.9645 (raw 0.9326) | EMA val acc 0.9685 | lr 1.43e-03 | 125.5s
+  saved best EMA checkpoint (val macro-F1: 0.9645)
+Epoch 014 | loss 0.7603 | EMA val macro-F1 0.9653 (raw 0.9268) | EMA val acc 0.9685 | lr 1.39e-03 | 124.6s
+  saved best EMA checkpoint (val macro-F1: 0.9653)
+Epoch 015 | loss 0.7508 | EMA val macro-F1 0.9654 (raw 0.9433) | EMA val acc 0.9691 | lr 1.35e-03 | 126.9s
+  saved best EMA checkpoint (val macro-F1: 0.9654)
+Epoch 016 | loss 0.7398 | EMA val macro-F1 0.9735 (raw 0.9509) | EMA val acc 0.9749 | lr 1.30e-03 | 126.1s
+  saved best EMA checkpoint (val macro-F1: 0.9735)
+Epoch 017 | loss 0.7233 | EMA val macro-F1 0.9752 (raw 0.9546) | EMA val acc 0.9762 | lr 1.25e-03 | 131.3s
+  saved best EMA checkpoint (val macro-F1: 0.9752)
+Epoch 018 | loss 0.7223 | EMA val macro-F1 0.9744 (raw 0.9371) | EMA val acc 0.9755 | lr 1.19e-03 | 131.7s
+Epoch 019 | loss 0.7130 | EMA val macro-F1 0.9750 (raw 0.9561) | EMA val acc 0.9762 | lr 1.12e-03 | 131.9s
+Epoch 020 | loss 0.7098 | EMA val macro-F1 0.9748 (raw 0.9474) | EMA val acc 0.9762 | lr 1.06e-03 | 127.3s
+Epoch 021 | loss 0.6958 | EMA val macro-F1 0.9772 (raw 0.9695) | EMA val acc 0.9781 | lr 9.88e-04 | 129.0s
+  saved best EMA checkpoint (val macro-F1: 0.9772)
+Epoch 022 | loss 0.7006 | EMA val macro-F1 0.9798 (raw 0.9581) | EMA val acc 0.9794 | lr 9.16e-04 | 133.5s
+  saved best EMA checkpoint (val macro-F1: 0.9798)
+Epoch 023 | loss 0.6946 | EMA val macro-F1 0.9801 (raw 0.9734) | EMA val acc 0.9813 | lr 8.43e-04 | 126.8s
+  saved best EMA checkpoint (val macro-F1: 0.9801)
+Epoch 024 | loss 0.6893 | EMA val macro-F1 0.9799 (raw 0.9673) | EMA val acc 0.9801 | lr 7.68e-04 | 128.8s
+Epoch 025 | loss 0.6919 | EMA val macro-F1 0.9804 (raw 0.9748) | EMA val acc 0.9820 | lr 6.93e-04 | 129.8s
+  saved best EMA checkpoint (val macro-F1: 0.9804)
+Epoch 026 | loss 0.6868 | EMA val macro-F1 0.9809 (raw 0.9776) | EMA val acc 0.9820 | lr 6.19e-04 | 126.1s
+  saved best EMA checkpoint (val macro-F1: 0.9809)
+Epoch 027 | loss 0.6774 | EMA val macro-F1 0.9803 (raw 0.9755) | EMA val acc 0.9813 | lr 5.46e-04 | 125.9s
+Epoch 028 | loss 0.6808 | EMA val macro-F1 0.9793 (raw 0.9784) | EMA val acc 0.9801 | lr 4.75e-04 | 132.6s
+Epoch 029 | loss 0.6692 | EMA val macro-F1 0.9791 (raw 0.9776) | EMA val acc 0.9801 | lr 4.07e-04 | 133.2s
+Epoch 030 | loss 0.6757 | EMA val macro-F1 0.9789 (raw 0.9771) | EMA val acc 0.9801 | lr 3.43e-04 | 128.3s
+Epoch 031 | loss 0.6705 | EMA val macro-F1 0.9786 (raw 0.9783) | EMA val acc 0.9801 | lr 2.82e-04 | 121.5s
+Epoch 032 | loss 0.6678 | EMA val macro-F1 0.9787 (raw 0.9788) | EMA val acc 0.9807 | lr 2.26e-04 | 126.5s
+Epoch 033 | loss 0.6664 | EMA val macro-F1 0.9779 (raw 0.9809) | EMA val acc 0.9801 | lr 1.75e-04 | 160.2s
+Epoch 034 | loss 0.6653 | EMA val macro-F1 0.9803 (raw 0.9824) | EMA val acc 0.9820 | lr 1.30e-04 | 159.0s
+Epoch 035 | loss 0.6653 | EMA val macro-F1 0.9812 (raw 0.9791) | EMA val acc 0.9826 | lr 9.10e-05 | 216.2s
+  saved best EMA checkpoint (val macro-F1: 0.9812)
+Epoch 036 | loss 0.6631 | EMA val macro-F1 0.9812 (raw 0.9771) | EMA val acc 0.9820 | lr 5.86e-05 | 218.2s
+Epoch 037 | loss 0.6635 | EMA val macro-F1 0.9807 (raw 0.9798) | EMA val acc 0.9813 | lr 3.31e-05 | 201.1s
+Epoch 038 | loss 0.6650 | EMA val macro-F1 0.9798 (raw 0.9804) | EMA val acc 0.9807 | lr 1.47e-05 | 197.0s
+Epoch 039 | loss 0.6641 | EMA val macro-F1 0.9798 (raw 0.9804) | EMA val acc 0.9807 | lr 3.67e-06 | 200.5s
+Epoch 040 | loss 0.6632 | EMA val macro-F1 0.9798 (raw 0.9806) | EMA val acc 0.9807 | lr 6.29e-09 | 208.4s
+
+Training complete. Best EMA val macro-F1: 0.9812 @ epoch 35 (best raw-model epoch score: 0.9824). Total: 94.3 min, peak VRAM 1601.8 MB
+
+Loading best EMA checkpoint for final val evaluation...
+
+Measuring model cost and inference latency...
+  params: 4.215 M  |  MACs: 0.234 G  |  ckpt: 17.07 MB
+  CPU latency (mean/p95): 37.92 / 58.54 ms
+  GPU latency (mean/p95): 17.91 / 22.44 ms
+                          precision    recall  f1-score   support
+
+   bacterial_leaf_blight     0.9730    1.0000    0.9863        72
+   bacterial_leaf_streak     1.0000    1.0000    1.0000        56
+bacterial_panicle_blight     1.0000    0.9412    0.9697        51
+                   blast     0.9807    0.9769    0.9788       260
+              brown_spot     0.9858    0.9653    0.9754       144
+              dead_heart     1.0000    1.0000    1.0000       216
+            downy_mildew     0.9767    0.9231    0.9492        91
+                   hispa     0.9832    0.9873    0.9853       237
+                  normal     0.9668    0.9924    0.9794       264
+                  tungro     0.9818    0.9939    0.9878       163
+
+                accuracy                         0.9826      1554
+               macro avg     0.9848    0.9780    0.9812      1554
+            weighted avg     0.9827    0.9826    0.9826      1554
+
+
+Best EMA val macro-F1: 0.9812 @ epoch 35
+Results saved to: E:\GitHub\Personal\krishidoc_ml\experiments\exp17_mobilenetv3large_smoothing_ema\results
+Full log:         E:\GitHub\Personal\krishidoc_ml\experiments\exp17_mobilenetv3large_smoothing_ema\results\training.log
+
+Note: test set was NOT evaluated. Per protocol, test is locked until
+the final winning experiment.

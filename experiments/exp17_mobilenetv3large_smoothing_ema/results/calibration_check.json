@@ -1,0 +1,24 @@
+{
+  "exp16": {
+    "macro_f1": 0.98,
+    "accuracy": 0.9813,
+    "errors": 29,
+    "nll": 0.084,
+    "ece_15bin": 0.0128,
+    "mean_confidence_correct": 0.9952,
+    "mean_confidence_incorrect": 0.8493,
+    "cpu_latency_mean_ms": 27.22,
+    "cpu_latency_p95_ms": 36.45
+  },
+  "exp17": {
+    "macro_f1": 0.9812,
+    "accuracy": 0.9826,
+    "errors": 27,
+    "nll": 0.223,
+    "ece_15bin": 0.1492,
+    "mean_confidence_correct": 0.837,
+    "mean_confidence_incorrect": 0.6346,
+    "cpu_latency_mean_ms": 28.9,
+    "cpu_latency_p95_ms": 44.0
+  }
+}
