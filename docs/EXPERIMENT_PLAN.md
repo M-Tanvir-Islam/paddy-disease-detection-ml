@@ -65,6 +65,7 @@ EfficientNet branch.
 | exp12 | exp11 + weighted CrossEntropy | Test whether weighted loss improves fragile/minority classes on top of augmentation | `exp12_efficientnet_b0_weighted` | complete: 0.9329 macro-F1; under exp11 and exp03 |
 | exp13 | exp12 + OneCycleLR | Test whether OneCycleLR improves EfficientNet-B0 fine-tuning | `exp13_efficientnet_b0_onecycle` | complete: 0.9701 macro-F1; best EfficientNet so far |
 | exp14 | exp13 + OneCycle max_lr sweep | Tune OneCycleLR max_lr for the best EfficientNet-B0 setup | `exp14_efficientnet_b0_onecycle_sweep` | complete: best 0.9713 macro-F1 at max_lr 5e-4 |
+| exp18 | exp14 `maxlr_5e4` recipe on `kaggle_grouped_v2` | Fair cross-track comparison with MobileNet exp16 under the leakage-resistant split | `exp18_efficientnet_b0_grouped_split` | in progress |
 
 EfficientNet augmentation result: exp11 added the MobileNet train-only augmentation recipe to exp03 and dropped to 0.9469 macro-F1, -0.0140 versus the 0.9609 exp03 baseline. Continue to exp12 only to test whether weighted loss recovers weak-class behavior on top of augmentation; if exp12 also underperforms, consider lighter EfficientNet-specific augmentation or stopping the track.
 
