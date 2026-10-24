@@ -35,14 +35,31 @@ exp03 as the highest validation macro-F1 model.
 | exp09 | MobileNetV3-Large OneCycle max_lr sweep | Yes | Yes | best OneCycle max_lr 1.5e-3 | 224 | 0.9779 | 0.9763 | 15.02 | +0.0033 vs exp08 |
 | exp10 | MobileNetV3-Large input resolution sweep | Yes | Yes | OneCycle max_lr 1.5e-3 | 256 | 0.9718 | 0.9718 | 17.90 | -0.0061 vs exp09; rejected |
 
+#### Leakage-resistant re-baseline
+
+| ID | Model | Aug | WL | LR config | Input | Val F1 | Val Acc | CPU ms | Delta vs prev |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| exp16 | MobileNetV3-Large grouped-split retrain | Yes | Yes | OneCycle max_lr 1.5e-3 | 224 | **0.9800** | 0.9813 | 21.15 | protocol reset; not directly comparable |
+
+exp16 repeats the exp09 winning recipe from fresh ImageNet weights on
+`kaggle_grouped_v2`. Accepted duplicate components cannot cross partitions;
+58 images in 11 cross-label components are quarantined. The test set remains
+locked. A later deployment-style check on 606 compatible Dhan-Shomadhan images
+showed a substantial domain gap (0.2162 accuracy and 0.2777 supported-class
+macro-F1 overall; 0.3317 accuracy on the 199 field-background images), so this
+checkpoint is not yet demonstrated to generalize to Dhan-style captures. A
+documented blur/green-coverage proxy retained 172 images but accuracy remained
+0.3081, so capture filtering alone did not resolve the gap.
+
 ### Track B - EfficientNet-B0
 
 | ID | Model | Aug | WL | LR config | Input | Val F1 | Val Acc | CPU ms | Delta vs prev |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| TBD | EfficientNet-B0 | Yes | No | TBD | 224 | - | - | - | future EfficientNet augmentation |
-| TBD | EfficientNet-B0 | Yes | Yes | TBD | 224 | - | - | - | future EfficientNet weighted loss |
-| TBD | EfficientNet-B0 + Dhan-Shomadhan | Yes | Yes | TBD | 224 | - | - | - | future deployment-style eval |
-| TBD | EfficientNet-B0 + label smoothing | Yes | Yes | TBD | 224 | - | - | - | optional future experiment |
+| exp11 | EfficientNet-B0 | Yes | No | head 3e-4 / full 5e-5 | 224 | 0.9469 | 0.9520 | 24.35 | -0.0140 vs exp03; rejected alone |
+| exp12 | EfficientNet-B0 | Yes | Yes | head 3e-4 / full 5e-5 | 224 | 0.9329 | 0.9379 | 24.07 | -0.0140 vs exp11; rejected |
+| exp13 | EfficientNet-B0 OneCycleLR | Yes | Yes | OneCycle max_lr 1e-3 | 224 | 0.9701 | 0.9718 | 26.01 | +0.0372 vs exp12 |
+| exp14 | EfficientNet-B0 OneCycle max_lr sweep | Yes | Yes | best OneCycle max_lr 5e-4 | 224 | 0.9713 | 0.9744 | 24.01 | +0.0012 vs exp13; best EfficientNet |
+| exp15 | EfficientNet-B0 OneCycle control | No | No | OneCycle max_lr 5e-4 | 224 | 0.9666 | 0.9667 | 25.74 | +0.0057 vs exp03; below exp14 and exp09 |
 
 ## Phase 3 - Final
 
