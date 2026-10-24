@@ -39,6 +39,7 @@ exp03 as the highest validation macro-F1 model.
 | ID | Model | Aug | WL | LR config | Input | Val F1 | Val Acc | CPU ms | Delta vs prev |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | exp16 | MobileNetV3-Large grouped-split retrain | Yes | Yes | OneCycle max_lr 1.5e-3 | 224 | **0.9800** | 0.9813 | 21.15 | protocol reset; not directly comparable |
+| exp19 | MobileNetV3-Large seed replicates (seeds 42, 1, 2) | Yes | Yes | OneCycle max_lr 1.5e-3 | 224 | 0.9794 ± 0.0007 | 0.9811 ± 0.0004 | 15.27 | mean ± SD over 3 seeds; exp16 recipe is stable |
 
 exp16 repeats the exp09 winning recipe from fresh ImageNet weights on
 `kaggle_grouped_v2`. Accepted duplicate components cannot cross partitions;

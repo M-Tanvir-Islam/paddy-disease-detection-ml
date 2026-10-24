@@ -1,0 +1,98 @@
+{
+  "seeds": [
+    42,
+    1,
+    2
+  ],
+  "per_seed": {
+    "42": {
+      "macro_f1": 0.98,
+      "accuracy": 0.9813,
+      "best_epoch": 38
+    },
+    "1": {
+      "macro_f1": 0.9787,
+      "accuracy": 0.9807,
+      "best_epoch": 37
+    },
+    "2": {
+      "macro_f1": 0.9794,
+      "accuracy": 0.9813,
+      "best_epoch": 29
+    }
+  },
+  "macro_f1": {
+    "mean": 0.9794,
+    "std": 0.0007,
+    "min": 0.9787,
+    "max": 0.98
+  },
+  "accuracy": {
+    "mean": 0.9811,
+    "std": 0.0004,
+    "min": 0.9807,
+    "max": 0.9813
+  },
+  "per_class_f1": {
+    "bacterial_leaf_blight": {
+      "mean": 0.9817,
+      "std": 0.004,
+      "min": 0.9793,
+      "max": 0.9863
+    },
+    "bacterial_leaf_streak": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "bacterial_panicle_blight": {
+      "mean": 0.9697,
+      "std": 0.0,
+      "min": 0.9697,
+      "max": 0.9697
+    },
+    "blast": {
+      "mean": 0.9821,
+      "std": 0.0048,
+      "min": 0.9771,
+      "max": 0.9866
+    },
+    "brown_spot": {
+      "mean": 0.9777,
+      "std": 0.0019,
+      "min": 0.9754,
+      "max": 0.9789
+    },
+    "dead_heart": {
+      "mean": 0.9969,
+      "std": 0.0013,
+      "min": 0.9954,
+      "max": 0.9977
+    },
+    "downy_mildew": {
+      "mean": 0.9454,
+      "std": 0.0087,
+      "min": 0.9371,
+      "max": 0.9545
+    },
+    "hispa": {
+      "mean": 0.9837,
+      "std": 0.0012,
+      "min": 0.9831,
+      "max": 0.9851
+    },
+    "normal": {
+      "mean": 0.9794,
+      "std": 0.0032,
+      "min": 0.9757,
+      "max": 0.9813
+    },
+    "tungro": {
+      "mean": 0.9769,
+      "std": 0.0035,
+      "min": 0.9728,
+      "max": 0.979
+    }
+  }
+}
