@@ -46,7 +46,7 @@ The dataset images are not stored in this repository. Preparation scripts expect
 | [`src/`](src/) | Shared dataset, training, augmentation, and evaluation utilities |
 | [`data/`](data/) | Dataset preparation and split definitions; raw images are kept out of Git |
 | [`docs/EXPERIMENT_PLAN.md`](docs/EXPERIMENT_PLAN.md) | Experiment design and decision record |
-| [`results/experiment_log.md`](results/experiment_log.md) | Results committed to `main` (currently through exp10) |
+| [`results/experiment_log.md`](results/experiment_log.md) | Results committed to `main` (currently through exp16) |
 | [Experiment branches](https://github.com/M-Tanvir-Islam/paddy-disease-detection-ml/branches) | Per-experiment configuration, training entrypoint, and reports |
 | [`compare_models` branch](https://github.com/M-Tanvir-Islam/paddy-disease-detection-ml/tree/compare_models) | Aggregated comparison of the earlier model tracks |
 
