@@ -43,6 +43,7 @@ exp03 as the highest validation macro-F1 model.
 | exp12 | EfficientNet-B0 | Yes | Yes | head 3e-4 / full 5e-5 | 224 | 0.9329 | 0.9379 | 24.07 | -0.0140 vs exp11; rejected |
 | exp13 | EfficientNet-B0 OneCycleLR | Yes | Yes | OneCycle max_lr 1e-3 | 224 | 0.9701 | 0.9718 | 26.01 | +0.0372 vs exp12 |
 | exp14 | EfficientNet-B0 OneCycle max_lr sweep | Yes | Yes | best OneCycle max_lr 5e-4 | 224 | 0.9713 | 0.9744 | 24.01 | +0.0012 vs exp13; best EfficientNet |
+| exp18 | EfficientNet-B0 grouped-split retrain | Yes | Yes | OneCycle max_lr 5e-4 | 224 | 0.9765 | 0.9775 | 23.20 | new split; -0.0035 vs MobileNet exp16 (0.9800, 15.5 ms) |
 
 ## Phase 3 - Final
 

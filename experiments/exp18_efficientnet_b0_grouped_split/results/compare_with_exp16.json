@@ -1,0 +1,22 @@
+{
+  "exp16_mobilenet_v3_large": {
+    "macro_f1": 0.98,
+    "accuracy": 0.9813,
+    "errors": 29,
+    "nll": 0.084,
+    "ece_15bin": 0.0128,
+    "cpu_latency_mean_ms": 15.47,
+    "cpu_latency_p95_ms": 17.81,
+    "checkpoint_MB": 17.07
+  },
+  "exp18_efficientnet_b0": {
+    "macro_f1": 0.9765,
+    "accuracy": 0.9775,
+    "errors": 35,
+    "nll": 0.1009,
+    "ece_15bin": 0.0147,
+    "cpu_latency_mean_ms": 23.2,
+    "cpu_latency_p95_ms": 26.06,
+    "checkpoint_MB": 16.39
+  }
+}
