@@ -9,11 +9,11 @@ checkpoints/
 *.pth
 *.onnx
 
-# Experiment folders: this branch owns exp16 only. Parent experiment folders
-# remain in history, but only exp16 is whitelisted for new untracked files.
+# Experiment folders: this branch owns exp19 only. Parent experiment folders
+# remain in history, but only exp19 is whitelisted for new untracked files.
 experiments/*
-!experiments/exp16_mobilenetv3large_grouped_split/
-!experiments/exp16_mobilenetv3large_grouped_split/**
+!experiments/exp19_mobilenetv3large_seed_replicates/
+!experiments/exp19_mobilenetv3large_seed_replicates/**
 
 # Local W&B run cache (per-machine, never committed)
 wandb/
